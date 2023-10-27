@@ -1,0 +1,385 @@
+/* Desktop (col-lg) 1024px+  */
+
+/* Celulares (col) 0 a 576px  */
+@media (max-width: 576px) {
+    .price-produto {
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+        font-size: 22px !important;
+    }
+
+    .wrapper {
+        width: 100%;
+    }
+
+    .calendar {
+        padding: 5px;
+    }
+
+    .modal-full {
+        padding: 5px !important;
+    }
+
+    .schedule-container {
+        width: 100%;
+        height: 400px;
+    }
+
+    .modalDescQRCode > .row > .col-6 {
+        max-width: 100%;
+    }
+
+    .descriacaoQRCode {
+        font-size: 16px;
+    }
+
+    .qrcodeImg {
+        padding: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .qrcodeImg img {
+        width: 170px;
+    }
+
+    .qrcodeImg button {
+        font-size: 16px;
+    }
+
+    .linksCompartilhamento {
+        flex-wrap: wrap;
+        display: flex;
+        justify-content: center;
+    }
+
+    .btnConfirmarPagamento {
+        font-size: 16px;
+    }
+
+    .tituloCobranca p {
+        font-size: 24px;
+    }
+}
+
+/* Tablets e Celulares (col) 0 a 768px  */
+@media (max-width: 768px) {
+
+    .container {
+        max-width: 540px !important;
+    }
+
+    .no-mobile {
+        display: none;
+    }
+
+    .col-one {
+        padding: 0 35px!important;
+    }
+
+    .navbar-toggler-icon {
+        padding-top: 5px;
+    }
+
+    .navbar-collapse {
+        background-color: var(--color-secondary);
+        padding: 20px;
+        text-align: center;
+        border-radius: 40px;
+    }
+
+    .navbar-collapse .btn-icon {
+        padding-right: 70px;
+        margin-top: 20px;
+    }
+
+    .navbar-collapse .btn-icon .icon {
+        right: inherit;
+        margin-left: 10px;
+    }
+
+    .banner {
+        padding: 50px 0;
+    }
+
+    .text-banner h1 {
+        font-size: 36px;
+    }
+
+    .text-banner p {
+        font-size: 18px;
+    }
+
+    .btn-yellow, .btn-white {
+        padding: 13px 23px;
+        font-size: 18px;
+    }
+
+    .btn-icon-left span.icon-left {
+        width: 43px;
+        height: 43px;
+        margin-left: -56px;
+    }
+
+    .btn-icon-left {
+        padding-left: 63px!important;
+    }
+
+    .title {
+        font-size: 30px;
+    }
+
+    .servicos {
+        padding-bottom: 50px;
+    }
+
+    .cardapio {
+        padding-bottom: 50px;
+    }
+
+    .container-menu {
+        overflow-x: auto;
+        overflow-y: hidden;
+        display: flex;
+        padding-bottom: 15px!important;
+    }
+
+    .img-produto {
+        position: absolute;
+        left: 15px;
+    }
+
+    .card-item {
+        height: 110px;
+        padding-left: 110px;
+        justify-content: center;
+        align-items: start;
+    }
+
+    .card-item .img-produto img {
+        width: 80px;
+    }
+
+    .title-produto {
+        margin-top: 0px !important;
+        height: 30px !important;
+        width: 100%;
+        text-align: left !important;
+    }
+
+    .price-produto {
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+        font-size: 18px !important;
+    }
+
+    #itensCardapio .mb-5 {
+        margin-bottom: 15px !important;
+    }
+
+    .depoimentos {
+        padding-bottom: 50px;
+    }
+
+    .background-depoimentos {
+        margin-top: 15%;
+    }
+
+    .reserva {
+        padding-bottom: 50px;
+    }
+
+    .card-secondary {
+        padding: 45px;
+        border-radius: 50px;
+    }
+
+    .container-logo-footer {
+        justify-content: center;
+    }
+
+    .container-texto-footer {
+        text-align: center;
+    } 
+
+    .container-redes-footer {
+        margin-top: 40px;
+        margin-bottom: 50px;
+        justify-content: center;
+    }
+
+    .modal-full {
+        padding: 40px;
+    }
+
+    .modal-full .item-carrinho {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .modal-full .img-produto {
+        position: relative;
+        left: 0;
+    }
+
+    .modal-full .img-produto img {
+        width: 50px;
+    }
+
+    .modal-full .dados-produto {
+        padding-left: 15px;
+        padding-right: 15px;
+        display: grid;
+    }
+
+    .modal-full .title-produto, .modal-full .price-produto {
+        font-size: 16px !important;
+    }
+
+    .modal-full .add-numero-itens {
+        padding: 2px 10px;
+    }
+
+    .modal-full .form-control {
+        font-size: 16px;
+    }
+
+    .modalPagamentos {
+        margin-top: 40px
+    }
+
+    .modalPagamentos .col-5 {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+
+    .row-method {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        justify-content: center !important;
+    }
+
+    .card-pagamento {
+        padding: 10px 15px;
+    }
+
+    .card-pagamento p {
+        text-align: center !important;
+    }
+
+    .icon-pix i {
+        font-size: 50px;
+    }
+
+    .icon-pix::before {
+        font-size: 50px;
+        top: 17px;
+    }
+
+    .icon-credit i {
+        font-size: 50px;
+    }
+
+    .icon-credit::before {
+        font-size: 50px;
+        top: 20px;
+    }
+
+    .col-qrcode {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .col-descricaoCobranca {
+        width: 100%;
+    }
+
+}
+
+/* Desktop e Tablets (col-md) 768px a 1024px  */
+@media (max-width: 1024px) {
+    .banner .container {
+        max-width: 800px;
+    }
+    .nav-link {
+        color: var(--color-black) !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    .img-banner {
+        position: absolute;
+        width: 430px;
+        top: 130px;
+        right: 15px;
+    }
+
+    .img-banner img {
+        width: 100%;
+    }
+
+    .card-banner {
+        top: 0;
+        height: 370px;
+        width: 370px;
+        border-radius: 150px;
+    }
+
+    .card-case {
+        width: 300px;
+        font-size: 12px;
+        bottom: 150px;
+    }
+
+    .container-menu {
+        overflow-x: auto;
+        overflow-y: hidden;
+        display: flex;
+        padding-bottom: 15px!important;
+    }
+
+    .img-banner-pizza {
+        position: absolute;
+        width: 430px;
+        top: 30px;
+        right: 45px;
+    }
+
+    .img-banner-pizza img {
+        width: 100%;
+    }
+
+    .card-depoimentos {
+        height: 340px;
+        width: 340px;
+    }
+
+    .card-reserva {
+        height: 270px;
+        width: 270px;
+        border-radius: 90px;
+        position: absolute;
+        background-color: var(--color-white);
+        right: 0;
+        top: 25px;
+    }
+
+    .reserva .img-banner img {
+        position: absolute;
+        width: 300px;
+        top: -30px;
+        right: 15px;
+    }
+
+    .col-qrcode {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
