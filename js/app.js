@@ -731,7 +731,7 @@ cardapio.metodos = {
                                                   \nContato do cliente: ${contato}`;
 
                                         $.ajax({
-                                            url: "https://formsubmit.co/ajax/luistthiago27@gmail.com",
+                                            url: "https://formsubmit.co/ajax/b80c5a3a3196a99c3eb85c31a9c2b513",
                                             type: "POST",
                                             contentType: "application/json",
                                             dataType: "json",
