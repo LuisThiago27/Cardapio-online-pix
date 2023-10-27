@@ -270,6 +270,8 @@ cardapio.metodos = {
         $("#btnVoltarReserva").addClass("none");
         $(".wrapper").removeClass("none");
         $("#btnTransparent").removeClass("none");
+        $("#schedule-result").text('');
+        $(".sBtn-text").text('');
         
 
     },
@@ -731,14 +733,14 @@ cardapio.metodos = {
                                                   \nContato do cliente: ${contato}`;
 
                                         $.ajax({
-                                            url: "https://formsubmit.co/ajax/luistthiago27@gmail.com",
+                                            url: "https://formsubmit.co/ajax/b80c5a3a3196a99c3eb85c31a9c2b513",
                                             type: "POST",
                                             contentType: "application/json",
                                             dataType: "json",
                                             data: JSON.stringify({
-                                                nome: `${nomeCompleto} + ${resultadoTxid.slice(0, 5) + '...'}`,
+                                                nome: `${nomeCompleto}`,
                                                 info: texto,
-                                                _subject: `${nomeCompleto}`,
+                                                _subject: `${nomeCompleto}  ${resultadoTxid.slice(0, 5) + '...'}`,
                                                 _honey: "",
                                                 _captcha: "false"
                                             }),
