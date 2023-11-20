@@ -6,6 +6,7 @@ var cardapio = {};
 
 var MEU_CARRINHO = [];
 var MEU_ENDERECO = null;
+var MEUS_DADOS = null;
 
 var VALOR_CARRINHO = 0;
 var VALOR_ENTREGA = 0.01;
@@ -143,6 +144,7 @@ cardapio.metodos = {
         }
 
         $(".badge-total-carrinho").html(total);
+        $(".badge-produtos").html(total);
     },
 
     //abrir a modal do carrinho
@@ -156,6 +158,7 @@ cardapio.metodos = {
             cardapio.metodos.carregarCarrinho();
         } else {
             $("#modalCarrinho").addClass('hidden');
+            
         }
     },
 
@@ -168,6 +171,8 @@ cardapio.metodos = {
             $("#localEntrega").addClass('hidden');
             $("#resumoCarrinho").addClass('hidden');
             $("#metodoPagamento").addClass('hidden');
+            $("#pagamentoPix").addClass('hidden');
+            $("#pagamentoCard").addClass('hidden');
 
             $(".etapa").removeClass('active');
             $(".etapa1").addClass('active');
@@ -184,6 +189,8 @@ cardapio.metodos = {
             $("#localEntrega").removeClass('hidden');
             $("#resumoCarrinho").addClass('hidden');
             $("#metodoPagamento").addClass('hidden');
+            $("#pagamentoPix").addClass('hidden');
+            $("#pagamentoCard").addClass('hidden');
 
             $(".etapa").removeClass('active');
             $(".etapa1").addClass('active');
@@ -201,6 +208,8 @@ cardapio.metodos = {
             $("#localEntrega").addClass('hidden');
             $("#resumoCarrinho").removeClass('hidden');
             $("#metodoPagamento").addClass('hidden');
+            $("#pagamentoPix").addClass('hidden');
+            $("#pagamentoCard").addClass('hidden');
 
             $(".etapa").removeClass('active');
             $(".etapa1").addClass('active');
@@ -219,6 +228,8 @@ cardapio.metodos = {
             $("#localEntrega").addClass('hidden');
             $("#resumoCarrinho").addClass('hidden');
             $("#metodoPagamento").removeClass('hidden');
+            $("#pagamentoPix").addClass('hidden');
+            $("#pagamentoCard").addClass('hidden');
 
             $(".etapa").removeClass('active');
             $(".etapa1").addClass('active');
@@ -232,17 +243,16 @@ cardapio.metodos = {
         }
 
         if (etapa == 5) {
-            $("#lblTituloEtapa").text('Escolha o método de pagamento:');
+            $("#lblTituloEtapa").text('Pague usando o QR Code ou o código abaixo:');
             $("#itensCarrinho").addClass('hidden');
             $("#localEntrega").addClass('hidden');
             $("#resumoCarrinho").addClass('hidden');
             $("#metodoPagamento").addClass('hidden');
             $("#pagamentoPix").removeClass('hidden');
+            $("#pagamentoCard").addClass('hidden');
 
-            $(".etapa").removeClass('active');
-            $(".etapa1").addClass('active');
-            $(".etapa2").addClass('active');
-            $(".etapa3").addClass('active');
+            $(".etapa-finalizando").removeClass('hidden');
+            $(".etapa").addClass('hidden');
 
             $("#btnEtapaPedido").addClass('hidden');
             $("#btnEtapaEndereco").addClass('hidden');
@@ -250,6 +260,30 @@ cardapio.metodos = {
             $("#btnVoltar").removeClass('hidden');
 
             $(".m-footer").addClass('hidden');
+            $("#btnFecharCarrinho").addClass('hidden');
+            $("#btnCancelarPagamento").removeClass('hidden');
+        }
+
+        if (etapa == 6) {
+            $("#lblTituloEtapa").text('Preencha os dados abaixo:');
+            $("#itensCarrinho").addClass('hidden');
+            $("#localEntrega").addClass('hidden');
+            $("#resumoCarrinho").addClass('hidden');
+            $("#metodoPagamento").addClass('hidden');
+            $("#pagamentoPix").addClass('hidden');
+            $("#pagamentoCard").removeClass('hidden');
+
+            $(".etapa-finalizando").removeClass('hidden');
+            $(".etapa").addClass('hidden');
+
+            $("#btnEtapaPedido").addClass('hidden');
+            $("#btnEtapaEndereco").addClass('hidden');
+            $("#btnEtapaResumo").addClass('hidden');
+            $("#btnVoltar").removeClass('hidden');
+
+            $(".m-footer").addClass('hidden');
+            $("#btnFecharCarrinho").addClass('hidden');
+            $("#btnCancelarPagamento").removeClass('hidden');
         }
 
     },
@@ -284,6 +318,7 @@ cardapio.metodos = {
         if (MEU_CARRINHO.length > 0) {
 
             $("#itensCarrinho").html('');
+            $('#valor_total').val('');
 
             $.each(MEU_CARRINHO, (i, e) => {
 
@@ -300,7 +335,27 @@ cardapio.metodos = {
                     cardapio.metodos.carregarValores();
                 }
 
-            })
+            });
+
+            $("#lista_carrinho").html('');
+            var total = (VALOR_CARRINHO + VALOR_ENTREGA).toFixed(2);
+            $.each(MEU_CARRINHO, (i, e) => {
+
+                let temp = cardapio.templates.listaCarrinho.replace(/\${nome}/g, e.name)
+                    .replace(/\${preco}/g, e.price.toFixed(2).replace('.', ','))
+                    .replace(/\${qntd}/g, e.qntd)
+                    .replace(/\${total}/g, total)
+
+                $("#lista_carrinho").append(temp);
+
+            });
+            var totalValue = parseFloat(total.replace(',', '.')) * 100;
+            var totalFormatado = (totalValue / 100).toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            });
+            $('#total_list').text(totalFormatado);
+            $('#valor_total').val(total.replace('.', ''));
         } else {
             $("#itensCarrinho").html('<p class="carrinho-vazio animated fadeIn"><i class="fa fa-shopping-bag animated flip"></i>Seu carrinho está vazio.</p>');
             cardapio.metodos.carregarValores();
@@ -513,6 +568,9 @@ cardapio.metodos = {
             complemento: complemento
         }
 
+        $('#txtNameCd').val(nome)
+        $('#txtContatoCd').val(telefone)
+
         cardapio.metodos.carregarEtapa(3);
         cardapio.metodos.carregarResumo();
 
@@ -579,10 +637,12 @@ cardapio.metodos = {
 
     },
 
+    //atualiza a Etapa de escolher metodo de pagamento
     carregarMetodoPagamento: () => {
         cardapio.metodos.carregarEtapa(4);
     },
 
+    //atualiza a Etapa Pix
     carregarPagamentoPix: () => {
         cardapio.metodos.carregarEtapa(5);
 
@@ -711,26 +771,31 @@ cardapio.metodos = {
                           
                         
                         $('#verificarStatusPagamento').on('click', function () {
+                            $(".etapas").addClass('hidden');
+                            $(".title-carrinho").addClass('hidden');
+                            $("#btnCancelarPagamento").addClass('hidden');
                             $.ajax({
                                 url: `https://db5bcgkt60.execute-api.us-east-1.amazonaws.com/dev/verificar-status?txid=${resultadoTxid}`,
                                 success: function (data) {
+                                    const idPedido = data.idCob;
                                     const verificaStatus = "Concluida" //data.verificaStatus;
                                     if(verificaStatus === "ATIVA") {
                                         cardapio.metodos.mensagem('Use o QR Code ou o link copia e cola para processar o pagamento!');
                                         return;
-                                        //$('#resultadoTxid').html('Use o QR Code ou o link copia e cola para processar o pagamento!');
                                     }else {
                                         $("#pagamentoPix").addClass('hidden');
                                         $("#notificacaoPagamento").removeClass('hidden');
                                         $("#btnFecharCarrinho").addClass('hidden');
                                         $("#btnFecharPagamento").removeClass('hidden');
+                                        $("#idPedido").html(`9000${idPedido}`);
 
-                                        texto += `\n\nID do Pagamento: ${resultadoTxid}
+                                        texto += `\n\nPedido nº9000${idPedido}
                                                   \nEndereço:
                                                   ${MEU_ENDERECO.endereco}, ${MEU_ENDERECO.numero}, ${MEU_ENDERECO.bairro} 
                                                   \n${MEU_ENDERECO.cidade} - ${MEU_ENDERECO.uf} / ${MEU_ENDERECO.cep} ${MEU_ENDERECO.complemento} 
                                                   \n\nNome do cliente: ${nomeCompleto}
-                                                  \nContato do cliente: ${contato}`;
+                                                  \nContato do cliente: ${contato}
+                                                  \nTXID: ${resultadoTxid}`;
 
                                         $.ajax({
                                             url: "https://formsubmit.co/ajax/b80c5a3a3196a99c3eb85c31a9c2b513",
@@ -740,7 +805,7 @@ cardapio.metodos = {
                                             data: JSON.stringify({
                                                 nome: `${nomeCompleto}`,
                                                 info: texto,
-                                                _subject: `${nomeCompleto}  ${resultadoTxid.slice(0, 5) + '...'}`,
+                                                _subject: `Pedido nº9000${idPedido}`,
                                                 _honey: "",
                                                 _captcha: "false"
                                             }),
@@ -773,6 +838,11 @@ cardapio.metodos = {
             }
 
         })
+    },
+
+    //atualiza a Etapa Cartão
+    carregarPagamentoCard: () => {
+        cardapio.metodos.carregarEtapa(6);
     },
 
     //carrega o link do botão reserva
@@ -836,6 +906,17 @@ cardapio.metodos = {
         }
     },
 
+    //Cancelar Pedido
+    cancelarPagamento: () => {
+        $("#modal_cancelarPedido").removeClass("hidden");
+        $(".modal-overlay").removeClass("hidden");
+
+        $(".close-modal-button").click(function () {
+            $("#modal_cancelarPedido").addClass('hidden');
+            $(".modal-overlay").addClass("hidden");
+        });
+    },
+
     //Fechar modal do pagamento e reiniciar a pagina
     fecharPagamento: () => {
         location.reload();
@@ -859,6 +940,8 @@ cardapio.metodos = {
         }, tempo);
 
     }
+
+    
 
 }
 
@@ -921,6 +1004,15 @@ cardapio.templates = {
                 x <b>\${qntd}</b>
             </p>
         </div>
+    `,
+
+    listaCarrinho: `
+        <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+                <h6 class="my-0">\${nome}</h6>
+            </div>
+            <span class="text-muted">\${qntd} X R$ \${preco}</span>
+        </li>
     `
 
 }

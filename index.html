@@ -9,11 +9,16 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/fontawesome.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/responsivo.css">
+
+    <!-- Script para gerar o payment-token -->
+    <script
+        type='text/javascript'>var s = document.createElement('script'); s.type = 'text/javascript'; var v = parseInt(Math.random() * 1000000); s.src = 'https://sandbox.gerencianet.com.br/v1/cdn/4e6ec69432f2e33ee3411f1a5360133e/' + v; s.async = false; s.id = '4e6ec69432f2e33ee3411f1a5360133e'; if (!document.getElementById('4e6ec69432f2e33ee3411f1a5360133e')) { document.getElementsByTagName('head')[0].appendChild(s); }; $gn = { validForm: true, processed: false, done: {}, ready: function (fn) { $gn.done = fn; } };</script>
 </head>
 
 <body>
@@ -391,19 +396,28 @@
         </div>
     </footer>
 
-    <div class="modal-full animated fadeIn hidden" id="modalCarrinho">
+    <div class="modal-full animated fadeIn hidden" id="modalCarrinho"><!--colocar o hidden-->
         <div class="m-header">
             <div class="container">
-                <a id="btnFecharCarrinho" class="btn btn-white btn-sm float-right" onclick="cardapio.metodos.abrirCarrinho(false);">
+                <a id="btnFecharCarrinho" class="btn btn-white btn-sm float-right"
+                    onclick="cardapio.metodos.abrirCarrinho(false);">
                     Fechar
                 </a>
-                <a id="btnFecharPagamento" class="btn btn-white btn-sm float-right hidden" onclick="cardapio.metodos.fecharPagamento();">
+                <a id="btnCancelarPagamento" class="btn btn-white btn-sm float-right hidden"
+                    onclick="cardapio.metodos.cancelarPagamento();">
+                    Fechar
+                </a>
+                <a id="btnFecharPagamento" class="btn btn-white btn-sm float-right hidden"
+                    onclick="cardapio.metodos.fecharPagamento();">
                     Fechar
                 </a>
                 <div class="etapas">
                     <div class="etapa etapa1 active">1</div>
                     <div class="etapa etapa2">2</div>
                     <div class="etapa etapa3">3</div>
+                </div>
+                <div class="etapas">
+                    <div class="etapa-finalizando hidden">Finalizando pagamento...</div>
                 </div>
                 <p class="title-carrinho mt-4">
                     <b id="lblTituloEtapa">Seu carrinho:</b>
@@ -569,7 +583,7 @@
                         </div>
 
                         <div class="col-5 col-lg-5 col-md-12 col-sm-12 mt-5 mt-5" style="margin-left: 120px;">
-                            <a onclick="cardapio.metodos.carregarPagamentoPix();">
+                            <a onclick="cardapio.metodos.carregarPagamentoCard();">
                                 <div class="card-pagamento card-credit">
                                     <div class="icon-payment icon-credit">
                                         <i class="fa-solid fa-square"></i>
@@ -633,7 +647,7 @@
                             </div>
                         </div>
 
-                        <div class="col-12 col-lg-6 col-md-12 col-sm-12 col-descricaoCobranca">
+                        <div class="col-12 col-lg-5 col-md-12 col-sm-12 col-descricaoCobranca">
                             <div id="tituloCobranca" class="tituloCobranca">
 
                             </div>
@@ -672,18 +686,229 @@
 
                 </div>
 
+                <div id="pagamentoCard" class="modalDescQRCode mr-0 ml-0 animated fadeIn hidden">
+                    <form class="needs-validation" id="formulario_pagamento" method="GET" novalidate>
+                        <div class="row row-container">
+                            <div class="col-md-5 col-lg-4 order-md-last">
+                                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="text-primary">Pedido</span>
+                                    <span class="badge bg-primary rounded-pill badge-produtos">0</span>
+                                </h4>
+                                <ul class="list-group" id="lista_carrinho">
+                                    <!-- Lista de pedidos -->
+                                </ul>
+                                <ul class="list-group mb-3">
+                                    <li class="list-group-item d-flex justify-content-between bg-light">
+                                        <h5>Total</h5>
+                                        <h5 id="total_list"></h5>
+
+                                        <input type="hidden" id="valor_total" value="" required>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="col-md-7 col-lg-8">
+                                <h4 class="mb-3">Dados pessoais do pagador</h4>
+
+                                <div class="row g-3">
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label>Nome Completo:</label>
+                                            <input id="txtNameCd" type="text" class="form-control"
+                                                value="Gorbadoc Oldbuck" required />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>CPF</label>
+                                            <input type="text" class="form-control" id="txtCpfCd" value="14014603059"
+                                                required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-10">
+                                        <div class="form-group">
+                                            <label>E-mail</label>
+                                            <input type="email" class="form-control" id="txtEmailCd"
+                                                value="gorb.oldbuck@gerencianet.com.br" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Telefone</label>
+                                            <input type="text" class="form-control" id="txtContatoCd"
+                                                value="62986070247" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Data de nascimento</label>
+                                            <input type="text" class="form-control" id="txtNascimentoCd"
+                                                value="29081990" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="my-4">
+
+                                <h4 class="mb-3">Informação do cartão</h4>
+
+                                <div class="row gy-3">
+
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <label>Número do cartão</label>
+                                            <input type="text" class="form-control" id="txtNumeroCartaoCd"
+                                                value="4012001038443335" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label>Bandeira:</label>
+                                            <select id="bandeiraCd" class="form-control">
+                                                <option value=""></option>
+                                                <option value="visa" selected>Visa</option>
+                                                <option value="mastercard">MasterCard</option>
+                                                <option value="amex">Amex</option>
+                                                <option value="elo">Elo</option>
+                                                <option value="hipercard">Hipercard</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Mês de vencimento</label>
+                                            <select class="form-control" id="mesVencimentoCd" required>
+                                                <option></option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option selected>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Ano de vencimento</label>
+                                            <select class="form-control" id="anoVencimentoCd" required>
+                                                <option></option>
+                                                <option>2020</option>
+                                                <option>2022</option>
+                                                <option>2023</option>
+                                                <option>2024</option>
+                                                <option selected>2025</option>
+                                                <option>2026</option>
+                                                <option>2027</option>
+                                                <option>2028</option>
+                                                <option>2029</option>
+                                                <option>2030</option>
+                                                <option>2031</option>
+                                                <option>2032</option>
+                                                <option>2033</option>
+                                                <option>2034</option>
+                                                <option>2035</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>CVV</label>
+                                            <input type="text" class="form-control" id="txtCodigoSegurancaCd"
+                                                value="123" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- Input do Payment Token que será gerado a partir dos dados do cartão inseridos -->
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Payment Token a ser gerado</label>
+                                            <input type="text" class="form-control" id="payment_token" readonly>
+                                        </div>
+                                    </div>
+
+                                    <!-- Input da máscara do cartão de crédito inserido -->
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Máscara do cartão de crédito</label>
+                                            <input type="text" class="form-control" id="mascara_cartao" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="my-4">
+
+                                <div id="areaBotoes" class="row g-3">
+                                    <div class="col-6 mb-3">
+                                        <button class="w-100 btn btn-primary btn-lg" id="ver_parcelas" type="button"><i
+                                                class="bi bi-arrow-right-short"></i> Definir
+                                            parcelas</button>
+
+                                        <!-- número de parcelas escolhido -->
+                                        <input type="text" class="form-control hidden" name="parcelas" id="parcelas">
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <button class="w-100 btn btn-secondary btn-lg disabled" id="confirmar_pagamento"
+                                            type="button">Confirmar pagamento</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- MODAL PARA DEFINIÇÃO DAS PARCELAS -->
+                    <div class="modal-parcelas hidden" id="modal_parcelas">
+                        <div class="modal-header">
+                            <h5 id="modal_parcelas_Label">Número de parcelas</h5>
+                            <button type="button" class="btn-close close-modal-button"><i
+                                    class="fa-solid fa-xmark"></i></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <label for="opcoes_parcelas" class="form-label">Escolha como deseja pagar</label>
+                            <select class="form-control select-form" id="opcoes_parcelas" required>
+
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary close-modal-button"
+                                data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" id="definir_parcelas" class="btn btn-primary">Definir
+                                parcelas</button>
+                        </div>
+                    </div>
+                    <div class="modal-overlay hidden" id="modal_overlay"></div>
+                </div>
+
                 <div id="notificacaoPagamento" class="container notificacao-pagamento mr-0 ml-0 animated fadeIn hidden">
                     <div class="row row-container-notificacao">
                         <div class="col-12 col-notificacao-dotlottie">
-                            <dotlottie-player src="https://lottie.host/dce704ea-6db1-4882-953a-2d0ab6cf3464/yQqkmGUilg.json"
+                            <dotlottie-player
+                                src="https://lottie.host/dce704ea-6db1-4882-953a-2d0ab6cf3464/yQqkmGUilg.json"
                                 background="transparent" speed="0.7" style="width: 200px; height: 200px;" loop
                                 autoplay></dotlottie-player>
                             <h3><b>Pagamento Confirmado!</b></h3>
+                            <h3>Pedido nº<b id="idPedido" style="color: #ffbf00;"></b></h3>
                             <p>Seu pedido será entregue dentro de 30 minutos.</p>
                         </div>
                         <div class="col-12">
 
-                            <div id="resumoCarrinhoNotificacao" class="row mr-0 ml-0 animated fadeIn resumo-notificacao">
+                            <div id="resumoCarrinhoNotificacao"
+                                class="row mr-0 ml-0 animated fadeIn resumo-notificacao">
                                 <p class="title-carrinho-notificacao mt-4">
                                     <b>Resumo do pedido:</b>
                                 </p>
@@ -692,19 +917,19 @@
                                         <b>Itens do pedido:</b>
                                     </p>
                                 </div>
-        
+
                                 <div class="col-12">
                                     <div class="row" id="listaItensResumoNotificacao">
-        
+
                                     </div>
                                 </div>
-        
+
                                 <div class="col-12">
                                     <p class="title-carrinho mt-4">
                                         <b>Local da entrega:</b>
                                     </p>
                                 </div>
-        
+
                                 <div class="col-12 item-carrinho resumo">
                                     <div class="img-map">
                                         <i class="fas fa-map-marked-alt"></i>
@@ -728,13 +953,34 @@
                             </div>
                         </div>
 
-                        </div>
                     </div>
-                    
+                </div>
+
+                
             </div>
+            <!-- MODAL PARA CANCELAR PEDIDO -->
+            <div class="modal-parcelas hidden" id="modal_cancelarPedido">
+                <div class="modal-header">
+                    <h5 id="modal_parcelas_Label">Cancelar pedido</h5>
+                    <button type="button" class="btn-close close-modal-button"><i
+                            class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <div class="modal-body">
+                    <h5>Deseja realmente cancelar seu pedido?</h5>
+                    <p>Se você clicar em cancelar pedido, seu pedido será removido do sistema e não poderá ser recuperado. Certifique-se de revisar sua decisão antes de prosseguir.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close-modal-button"
+                        data-bs-dismiss="modal" onclick="cardapio.metodos.fecharPagamento();" >Cancelar pedido</button>
+                    <button type="button" class="btn btn-primary close-modal-button">Continuar</button>
+                </div>
+            </div>
+            <div class="modal-overlay hidden" id="modal_overlay"></div>
+
         </div>
 
-        <div class="m-footer">
+        <div class="m-footer"> <!--tirar o hidden-->
             <div class="container">
                 <div class="container-total text-right mb-4">
                     <p class="mb-0">
@@ -776,15 +1022,16 @@
 
     <div class="modal-full modalReservaFull animated fadeIn hidden" id="modalReserva">
         <div class="container btn-fechar-reserva">
-            <a onclick="cardapio.metodos.voltarEtapaReserva();" class="btn btn-white float-right mr-3 none" id="btnVoltarReserva">
+            <a onclick="cardapio.metodos.voltarEtapaReserva();" class="btn btn-white float-right mr-3 none"
+                id="btnVoltarReserva">
                 <i class="fa-solid fa-arrow-left" style="font-size: 26px; color: #4f4f4f;"></i>
             </a>
             <a id="btnTransparent"></a>
-           <a class="btn btn-white float-right" onclick="cardapio.metodos.abrirReserva(false);">
+            <a class="btn btn-white float-right" onclick="cardapio.metodos.abrirReserva(false);">
                 Fechar
-            </a> 
+            </a>
         </div>
-        
+
         <div class="wrapper">
             <h3>Escolha uma data para agendar</h3>
             <header>
@@ -853,17 +1100,19 @@
             <button id="schedule-button">Agendar</button>
             <p id="schedule-result"></p>
         </div>
-        
+
     </div>
 
 
     <script type="text/javascript" src="./js/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.min.js"></script>
     <script type="text/javascript" src="./js/modernizr-3.5.0.min.js"></script>
     <script type="text/javascript" src="./js/bootstrap.min.js"></script>
     <script type="text/javascript" src="./js/popper.min.js"></script>
     <script type="text/javascript" src="./js/wow.min.js"></script>
     <script type="text/javascript" src="./js/dados.js"></script>
     <script type="text/javascript" src="./js/app.js"></script>
+    <script type="text/javascript" src="./js/cartao.js"></script>
     <script type="text/javascript" src="./js/calendar.js"></script>
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 

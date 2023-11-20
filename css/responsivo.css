@@ -60,6 +60,14 @@
     .tituloCobranca p {
         font-size: 24px;
     }
+
+    .modal-parcelas .modal-footer {
+        justify-content: center;
+    }
+
+    .col-notificacao-dotlottie .h3 {
+        font-size: 1.65rem;
+    }
 }
 
 /* Tablets e Celulares (col) 0 a 768px  */
