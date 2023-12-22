@@ -68,6 +68,60 @@
     .col-notificacao-dotlottie .h3 {
         font-size: 1.65rem;
     }
+
+    .container-desc {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    #modalItem {
+        padding: 0 !important;
+    }
+
+    .col-img-produto-desc {
+        padding: 0;
+    }
+
+    .col-details-desc {
+        margin-top: 40%;
+        padding: 0;
+    }
+
+    .img-produto-desc {
+        width: 100%;
+        height: 300px; /* Defina a altura desejada */
+        overflow: hidden; 
+    }
+
+    .img-produto-desc img {
+        width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .m-header-desc {
+        display: none;
+    }
+
+    .title-desc-cell {
+        display: flex !important;
+        padding-left: 30px;
+    }
+
+    .add-itens-carrinho {
+        margin-right: 5px;
+    }
+
+    .spn-add {
+        margin-right: 5px;
+    }
+
+    .btn-fechar-desc-cell {
+        display: flex;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+    }
 }
 
 /* Tablets e Celulares (col) 0 a 768px  */

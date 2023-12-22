@@ -396,7 +396,7 @@
         </div>
     </footer>
 
-    <div class="modal-full animated fadeIn hidden" id="modalCarrinho"><!--colocar o hidden-->
+    <div class="modal-full animated fadeIn hidden" id="modalCarrinho">
         <div class="m-header">
             <div class="container">
                 <a id="btnFecharCarrinho" class="btn btn-white btn-sm float-right"
@@ -568,8 +568,8 @@
 
                 <div id="metodoPagamento" class="modalPagamentos animated fadeIn hidden">
 
-                    <div class="row row-method mr-0 ml-0 animated fadeIn">
-                        <div class="col-5 col-lg-5 col-md-12 col-sm-12 mt-5" style="margin-left: -70px;">
+                    <div class="row row-method mr-0 ml-0 animated fadeIn mt-3 mb-3">
+                        <div class="col-5 col-lg-5 col-md-12 col-sm-12" style="margin-left: -70px;">
                             <a onclick="cardapio.metodos.carregarPagamentoPix();">
                                 <div class="card-pagamento card-pix">
                                     <div class="icon-payment icon-pix">
@@ -582,7 +582,7 @@
                             </a>
                         </div>
 
-                        <div class="col-5 col-lg-5 col-md-12 col-sm-12 mt-5 mt-5" style="margin-left: 120px;">
+                        <div class="col-5 col-lg-5 col-md-12 col-sm-12" style="margin-left: 120px;">
                             <a onclick="cardapio.metodos.carregarPagamentoCard();">
                                 <div class="card-pagamento card-credit">
                                     <div class="icon-payment icon-credit">
@@ -1018,6 +1018,35 @@
         </div>
     </div>
 
+    <div class="modal-full animated fadeIn hidden" id="modalItem">
+        <div class="m-header m-header-desc">
+            <div class="container">
+                <a id="btnFecharCarrinho" class="btn btn-white btn-sm float-right"
+                    onclick="cardapio.metodos.fecharModalItem(false);">
+                    Fechar
+                </a>
+                <div class="content-title-desc">
+                    <div></div>
+                    <div id="nomeItem" class="title-desc"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="m-body-desc">
+            <div class="container container-desc" id="descItensCarrinho">
+                
+            </div>
+            
+        </div>
+
+        <div class="m-footer">
+            <div class="container">
+                <div class="container-total container-footer-desc" id="containerFooterDesc">
+                    
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <div class="modal-full modalReservaFull animated fadeIn hidden" id="modalReserva">
@@ -1158,6 +1187,18 @@
         window.addEventListener("load", updateCalendarText);
         window.addEventListener("resize", updateCalendarText);
 
+    </script>
+
+    <script>
+        function contarCaracteres() {
+            var textarea = document.getElementById("comentario");
+            var contador = document.getElementById("contador-caracteres");
+            
+            var caracteresDigitados = textarea.value.length;
+            var caracteresRestantes = 140 - caracteresDigitados;
+
+            contador.textContent = caracteresDigitados + "/140";
+        }
     </script>
 
 </body>

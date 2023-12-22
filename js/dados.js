@@ -98,7 +98,7 @@ var MENU = {
             "img": "./img/cardapio/burguers/shake-shack-shackburger-8-pack.973a5e26836ea86d7e86a327becea2b0.jpg",
             "name": "Shake Shack",
             "dsc": "Shake Shack ShackBurger® - 8 Pack",
-            "price": 49
+            "price": 49.99
         },
         {
             "id": "gotts-cheeseburger-kit-for-4",
@@ -500,6 +500,108 @@ var MENU = {
             "dsc": "Dry-Aged Boneless Ribeye Steak Dinner Kit for 4",
             "price": 225
         },
+        {
+            "id": "california-reserve-filet-mignon-steak",
+            "img": "./img/cardapio/steaks/california-reserve-filet-mignon-steak.ff15071964ec8141d30c2ba05fb117e0.jpg",
+            "name": "Flannery Beef",
+            "dsc": "California Reserve Filet Mignon Steak",
+            "price": 22
+        },
+        {
+            "id": "mesquite-smoked-peppered-beef-tenderloin",
+            "img": "./img/cardapio/steaks/mesquite-smoked-peppered-beef-tenderloin.5c314418a1f75c7057eed686e2fad46f.jpg",
+            "name": "Perini Ranch Steakhouse",
+            "dsc": "Mesquite Smoked Peppered Beef Tenderloin",
+            "price": 165
+        }
+    ]
+}
+
+
+var ACOMP = {
+    "churrasco": [
+        {
+            "id": "post-oak-smoked-half-brisket",
+            "img": "./img/cardapio/churrasco/post-oak-smoked-usda-prime-half-brisket.6f17178dde7d806670bcc73ff11762b3.jpg",
+            "name": "Southside Market & Barbeque",
+            "dsc": "Post Oak Smoked USDA Prime Half Brisket",
+            "price": 109
+        },
+        {
+            "id": "best-of-texas-bbq-combo-serves-14",
+            "img": "./img/cardapio/churrasco/best-of-texas-bbq-combo-serves-14.7ae90266335e539c67e77fed14b43029.jpg",
+            "name": "Snow's BBQ",
+            "dsc": "Best of Texas BBQ Combo - Serves 14",
+            "price": 269
+        }
+    ],
+    "burgers": [
+        {
+            "id": "maionese-extra",
+            "img": "https://static.ifood-static.com.br/image/upload/t_medium/pratos/31074bff-06b9-401c-88ab-d5be3c606295/202301311123_08M4_i.jpg",
+            "name": "maionese extra",
+            "dsc": "Gott's Complete Cheeseburger Kit for 8",
+            "price": 2.50
+        },
+        {
+            "id": "molho-da-casa",
+            "img": "./img/cardapio/burguers/Gramercy-Tavern-Burger-and-Kielbasa-Kit-6.4.21-72ppi-1x1-47.jpg",
+            "name": "Molho da Casa",
+            "dsc": "Gramercy Tavern Burger + Kielbasa Combo",
+            "price": 3.00
+        }
+    ],
+    "sobremesas": [
+        {
+            "id": "canudo-extra-04",
+            "img": "./img/cardapio/sobremesas/gulab-jamun-ice-cream-cakes-2-pack.c45b4d0750ad22d741f84dc1f26d20e7.jpg",
+            "name": "Canudo extra",
+            "dsc": "Gulab Jamun Ice Cream Cakes - 2 Pack",
+            "price": 1.00
+        },
+        {
+            "id": "jacques-world-famous-chocolate-chip-cookies-12-pack",
+            "img": "./img/cardapio/sobremesas/jacques-world-famous-chocolate-chip-cookies-12-pack.3b373bdd67cd25084182c21499f675d1.jpg",
+            "name": "Jacques Torres Chocolate",
+            "dsc": "Jacques' World Famous Chocolate Chip Cookies - 12 Pack",
+            "price": 69.95
+        }
+    ],
+    "bebidas": [
+        
+        {
+            "id": "002-charleston-bloody-mary-mix-weekender-bold-and-spicy",
+            "img": "./img/cardapio/bebidas/weekender-charleston-bloody-mary-mix-bold-and-spicy.c372868c9937e407a299a22001e210e2.jpg",
+            "name": "Charleston Beverage Company",
+            "dsc": "Weekender | Charleston Bloody Mary Mix Bold & Spicy",
+            "price": 39.95
+        },
+        {
+            "id": "nola-cold-brew-concentrate-bag-in-box",
+            "img": "./img/cardapio/bebidas/nola-cold-brew-concentrate-bag-in-box.3df6fde8bd83f29235565984ae8ed22b.jpg",
+            "name": "Grady's Cold Brew",
+            "dsc": "NOLA Cold Brew Concentrate Bag-in-Box",
+            "price": 40
+        }
+    ],
+    "pizzas": [
+        
+        {
+            "id": "tonys-custom-pizza-3-pack",
+            "img": "./img/cardapio/pizzas/choose-your-own-pizza-3-pack.fcf7a43e38593007ef2857fe16d6dd26.jpg",
+            "name": "Tony's Pizza Napoletana",
+            "dsc": "Choose Your Own Pizza - 3 Pack",
+            "price": 99
+        },
+        {
+            "id": "plain-thin-crust-pizza-4-pack",
+            "img": "./img/cardapio/pizzas/plain-thin-crust-pizza-4-pack.5540e9d166db2f0853643c6517e4a225.jpg",
+            "name": "The Columbia Inn",
+            "dsc": "Plain Thin Crust Pizza - 4 Pack",
+            "price": 79
+        }
+    ],
+    "steaks": [
         {
             "id": "california-reserve-filet-mignon-steak",
             "img": "./img/cardapio/steaks/california-reserve-filet-mignon-steak.ff15071964ec8141d30c2ba05fb117e0.jpg",

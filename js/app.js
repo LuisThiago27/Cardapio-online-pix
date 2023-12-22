@@ -5,6 +5,8 @@ $(document).ready(function () {
 var cardapio = {};
 
 var MEU_CARRINHO = [];
+var ITENS = [];
+var ITENS_ACOMP = [];
 var MEU_ENDERECO = null;
 var MEUS_DADOS = null;
 
@@ -81,6 +83,8 @@ cardapio.metodos = {
     //aumentar a quantidade do item do cardapio
     aumentarQuantidade: (id) => {
 
+        console.log(id)
+
         let qntdAtual = parseInt($("#qntd-" + id).text());
         $("#qntd-" + id).text(qntdAtual + 1);
 
@@ -89,7 +93,7 @@ cardapio.metodos = {
     //adicionar ao carrinho o item do cardapio
     adicionarAoCarrinho: (id) => {
 
-        let qntdAtual = parseInt($("#qntd-" + id).text());
+        let qntdAtual = parseInt($("#qntd-desc-" + id).text());
 
         if (qntdAtual > 0) {
 
@@ -118,8 +122,46 @@ cardapio.metodos = {
                     MEU_CARRINHO.push(item[0]);
                 }
 
+                let idAcompVariaveis = [];
+
+                // Itera sobre todos os elementos cujo ID começa com 'qntd-acomp-'
+                $('[id^="qntd-acomp-"]').each(function () {
+                    let variavel = {
+                        qntd: parseInt($(this).text())
+                    };
+
+                    idAcompVariaveis.push(variavel);
+                });
+                for (let i = 0; i < idAcompVariaveis.length; i++) {
+                    if (idAcompVariaveis[i].qntd > 0) {
+                        for (let i = 0; i < ITENS_ACOMP.length; i++) {
+                            console.log(ITENS_ACOMP)
+                            var qntdAcomp = idAcompVariaveis[i].qntd;
+
+                            if (qntdAcomp > 0) {
+                                var idAcomp = ITENS_ACOMP[i].id;
+
+                                let existe = $.grep(MEU_CARRINHO, (elem, index) => { return elem.id == idAcomp });
+
+                                if (existe.length > 0) {
+                                    let objIndex = MEU_CARRINHO.findIndex((obj => obj.id == idAcomp));
+                                    MEU_CARRINHO[objIndex].qntd = MEU_CARRINHO[objIndex].qntd + idAcompVariaveis[i].qntd;
+                                }
+                                else {
+                                    ITENS_ACOMP[i].qntd = qntdAcomp;
+                                    MEU_CARRINHO.push(ITENS_ACOMP[i]);
+                                    console.log(MEU_CARRINHO)
+                                }
+                            }
+                        }
+                    }
+                }
+
+                ITENS_ACOMP = [];
+
+
                 cardapio.metodos.mensagem('Item adicionado ao carrinho', 'green');
-                $("#qntd-" + id).text(0);
+                $("#modalItem").addClass('hidden');
 
                 cardapio.metodos.atualizaBadgeTotal();
             }
@@ -158,8 +200,198 @@ cardapio.metodos = {
             cardapio.metodos.carregarCarrinho();
         } else {
             $("#modalCarrinho").addClass('hidden');
-            
+
         }
+    },
+
+    abrirModalItem: (id) => {
+        $("#modalItem").removeClass('hidden');
+        ITENS = [];
+        var categoria = $(".container-menu a.active").attr('id').split('menu-')[1];
+
+        //obtem a lista de itens
+        let filtro = MENU[categoria];
+
+        //obtem o item
+        let item = $.grep(filtro, (e, i) => { return e.id == id });
+
+        let itensAcomp = ACOMP[categoria];
+
+
+        var dataItens = {
+            id: item[0].id,
+            name: item[0].name,
+            img: item[0].img,
+            dsc: item[0].dsc,
+            price: item[0].price
+        };
+
+        ITENS.push(dataItens);
+
+        cardapio.metodos.carregarModalItem(ITENS[0], itensAcomp);
+    },
+
+    fecharModalItem: (abrir) => {
+        if (!abrir) {
+            $("#modalItem").addClass('hidden');
+        }
+    },
+
+    //carrega a lista de descrição do item do carrinho
+    carregarModalItem: (itens, itensAcomp) => {
+
+        $("#descItensCarrinho").html('');
+        $("#cardItensAcomp").html('');
+        $("#containerFooterDesc").html('');
+        $('#valor_total').val('');
+
+        $("#nomeItem").text(itens.name);
+
+        let temp = cardapio.templates.descItem.replace(/\${desc}/g, itens.dsc)
+            .replace(/\${nome}/g, itens.name)
+            .replace(/\${preco}/g, itens.price.toFixed(2).replace('.', ','))
+            .replace(/\${id}/g, itens.id)
+            .replace(/\${imagem}/g, itens.img)
+
+        $("#descItensCarrinho").append(temp);
+
+        itensAcomp.forEach((itens) => {
+            let temp = cardapio.templates.itensAcomp.replace(/\${desc}/g, itens.dsc)
+                .replace(/\${nome}/g, itens.name)
+                .replace(/\${preco}/g, itens.price.toFixed(2).replace('.', ','))
+                .replace(/\${id}/g, itens.id)
+                .replace(/\${imagem}/g, itens.img)
+
+            var dataItensAcomp = {
+                id: itens.id,
+                name: itens.name,
+                img: itens.img,
+                dsc: itens.dsc,
+                price: itens.price
+            };
+
+            ITENS_ACOMP.push(dataItensAcomp);
+
+            $("#cardItensAcomp").append(temp);
+        });
+
+        let tempBtnAdicionarItem = cardapio.templates.btnAdicionarItem.replace(/\${id}/g, itens.id)
+            .replace(/\${preco}/g, itens.price.toFixed(2).replace('.', ','))
+
+        $("#containerFooterDesc").append(tempBtnAdicionarItem);
+
+    },
+
+    //diminuir a quantidade do item do cardapio
+    diminuirQuantidadeDesc: (id) => {
+
+        let qntdAtual = parseInt($("#qntd-desc-" + id).text());
+
+        if (qntdAtual > 1) {
+            $("#qntd-desc-" + id).text(qntdAtual - 1);
+            cardapio.metodos.subtrairBtnTotalDesc(id);
+        }
+
+    },
+
+    //aumentar a quantidade do item do cardapio
+    aumentarQuantidadeDesc: (id) => {
+
+        let qntdAtual = parseInt($("#qntd-desc-" + id).text());
+
+        $("#qntd-desc-" + id).text(qntdAtual + 1);
+        cardapio.metodos.somarBtnTotalDesc(id);
+
+    },
+
+    somarBtnTotalDesc: (id) => {
+        let objIndex = ITENS.findIndex((obj => obj.id == id));
+
+        var total = ITENS[objIndex].price;
+        var valorAtual = parseFloat($("#totalDesc").text().replace('R$ ', '').replace(',', '.')); // Converte para número
+        var valorAtualizado = (total + valorAtual).toFixed(2).replace('.', ',');
+
+        $("#totalDesc").text('R$ ' + valorAtualizado);
+    },
+
+    subtrairBtnTotalDesc: (id) => {
+        let objIndex = ITENS.findIndex((obj => obj.id == id));
+
+        var total = ITENS[objIndex].price;
+        var valorAtual = parseFloat($("#totalDesc").text().replace('R$ ', '').replace(',', '.')); // Converte para número
+        var valorAtualizado = (valorAtual - total).toFixed(2).replace('.', ',');
+
+        $("#totalDesc").text('R$ ' + valorAtualizado);
+    },
+
+
+
+
+    //diminuir a quantidade do item do cardapio
+    diminuirQuantidadeAcomp: (id) => {
+        let qntdAtual = parseInt($("#qntd-acomp-" + id).text());
+        let btnMais = $(".btn-mais-desc");
+
+        if (qntdAtual > 0) {
+            $("#qntd-acomp-" + id).text(qntdAtual - 1);
+            cardapio.metodos.subtrairBtnTotalAcomp(id);
+
+            // Remover a classe limite-atingido se a quantidade estiver abaixo do limite
+            let totalGeral = cardapio.metodos.calcularTotalGeral();
+            if (totalGeral < 8 && btnMais.hasClass("limite-atingido")) {
+                btnMais.removeClass("limite-atingido");
+            }
+        }
+    },
+
+    //aumentar a quantidade do item do cardapio
+    aumentarQuantidadeAcomp: (id) => {
+        let qntdAtual = parseInt($("#qntd-acomp-" + id).text());
+        let btnMais = $(".btn-mais-desc");
+        let totalGeral = cardapio.metodos.calcularTotalGeral();
+
+        if (totalGeral < 8) {
+            $("#qntd-acomp-" + id).text(qntdAtual + 1);
+            cardapio.metodos.somarBtnTotalAcomp(id);
+            totalGeral++; // Incrementa o total geral
+
+            // Adicionar a classe limite-atingido se o total atingir 8
+            if (totalGeral >= 8 && !btnMais.hasClass("limite-atingido")) {
+                btnMais.addClass("limite-atingido");
+            }
+        }
+    },
+
+    somarBtnTotalAcomp: (id) => {
+        let objIndex = ITENS_ACOMP.findIndex((obj => obj.id == id));
+
+        var total = ITENS_ACOMP[objIndex].price;
+        var valorAtual = parseFloat($("#totalDesc").text().replace('R$ ', '').replace(',', '.')); // Converte para número
+        var valorAtualizado = (total + valorAtual).toFixed(2).replace('.', ',');
+
+        $("#totalDesc").text('R$ ' + valorAtualizado);
+    },
+
+    subtrairBtnTotalAcomp: (id) => {
+        let objIndex = ITENS_ACOMP.findIndex((obj => obj.id == id));
+
+        var total = ITENS_ACOMP[objIndex].price;
+        var valorAtual = parseFloat($("#totalDesc").text().replace('R$ ', '').replace(',', '.')); // Converte para número
+        var valorAtualizado = (valorAtual - total).toFixed(2).replace('.', ',');
+
+        $("#totalDesc").text('R$ ' + valorAtualizado);
+    },
+
+    calcularTotalGeral: () => {
+        let totalGeral = 0;
+
+        // Iterar sobre todos os itens no cardápio
+        $(".add-numero-acomp").each((index, element) => {
+            let qntd = parseInt($(element).text());
+            totalGeral += qntd;
+        });
+
+        return totalGeral;
     },
 
     //altera os textos e exibe os botões das etapas
@@ -306,7 +538,7 @@ cardapio.metodos = {
         $("#btnTransparent").removeClass("none");
         $("#schedule-result").text('');
         $(".sBtn-text").text('');
-        
+
 
     },
 
@@ -724,12 +956,12 @@ cardapio.metodos = {
                         }
 
                         updateCountdown();
-                        
+
                         const $copyButton = $('#qrcodeImg button');
                         const $copyLink = $('#linksCompartilhamento .linkCopy');
                         const $iniciarConversaWppPix = $("#btnIniciarConversaWppPix");
 
-                        $copyButton.click(function() {
+                        $copyButton.click(function () {
                             const $tempInput = $('<input>');
                             $tempInput.val(codQRCode);
                             $('body').append($tempInput);
@@ -738,12 +970,12 @@ cardapio.metodos = {
                             $copyButton.html(`<i class="fa-solid fa-circle-check"></i> &nbsp Copiado!`);
                             $tempInput.remove();
 
-                            setTimeout(function() {
+                            setTimeout(function () {
                                 $copyButton.html(`<i class="fa-solid fa-copy"></i> &nbsp Copiar código`);
-                              }, 5000);
+                            }, 5000);
                         });
 
-                        $copyLink.click(function(e) {
+                        $copyLink.click(function (e) {
                             e.preventDefault();
                             const linkParaCopiar = 'https://www.example.com';
                             const $tempInputLink = $('<input>');
@@ -753,13 +985,13 @@ cardapio.metodos = {
                             document.execCommand('copy');
                             $tempInputLink.remove();
                             $copyLink.html(`<i class="fa-solid fa-share-nodes"></i> Link Copiado!`);
-                            setTimeout(function() {
+                            setTimeout(function () {
                                 $copyLink.html(`<i class="fa-solid fa-share-nodes"></i> Copiar Link`);
                             }, 5000);
                         });
 
                         //inicia uma conversa clicando no link do WhatsApp para processar o pagamento pix
-                        $iniciarConversaWppPix.click(function() {
+                        $iniciarConversaWppPix.click(function () {
                             var texto = `Olá! Pague R$ *${valueResult}* via Pix para *Luis Thiago Batista de Sena*.`;
 
                             var encode = encodeURI(texto);
@@ -768,8 +1000,8 @@ cardapio.metodos = {
                             $iniciarConversaWppPix.attr('href', URL);
                         });
 
-                          
-                        
+
+
                         $('#verificarStatusPagamento').on('click', function () {
                             $(".etapas").addClass('hidden');
                             $(".title-carrinho").addClass('hidden');
@@ -779,10 +1011,10 @@ cardapio.metodos = {
                                 success: function (data) {
                                     const idPedido = data.idCob;
                                     const verificaStatus = "Concluida" //data.verificaStatus;
-                                    if(verificaStatus === "ATIVA") {
+                                    if (verificaStatus === "ATIVA") {
                                         cardapio.metodos.mensagem('Use o QR Code ou o link copia e cola para processar o pagamento!');
                                         return;
-                                    }else {
+                                    } else {
                                         $("#pagamentoPix").addClass('hidden');
                                         $("#notificacaoPagamento").removeClass('hidden');
                                         $("#btnFecharCarrinho").addClass('hidden');
@@ -809,14 +1041,14 @@ cardapio.metodos = {
                                                 _honey: "",
                                                 _captcha: "false"
                                             }),
-                                            success: function(data) {
+                                            success: function (data) {
                                                 console.log(data);
                                             },
-                                            error: function(error) {
+                                            error: function (error) {
                                                 console.log(error);
                                             }
                                         });
-                                        
+
 
                                         MEU_CARRINHO = [];
                                         cardapio.metodos.atualizaBadgeTotal();
@@ -941,7 +1173,7 @@ cardapio.metodos = {
 
     }
 
-    
+
 
 }
 
@@ -949,7 +1181,7 @@ cardapio.templates = {
 
     item: `
         <div class="col-12 col-lg-3 col-md-3 col-sm-6 mb-5 wow fadeInUp">
-            <div class="card card-item" id="\${id}">
+            <div class="card card-item" id="\${id}" onclick="cardapio.metodos.abrirModalItem('\${id}')">
                 <div class="img-produto">
                     <img src="\${imagem}" />
                 </div>
@@ -967,6 +1199,86 @@ cardapio.templates = {
                 </div>
             </div>
         </div>
+    `,
+
+    descItem: `
+        <div class="col-12 col-lg-4 col-md-4 col-img-produto-desc">
+            <a id="btnFecharCarrinho" class="btn btn-white btn-sm float-right btn-fechar-desc-cell"
+                onclick="cardapio.metodos.fecharModalItem(false);">
+                Fechar
+            </a>
+            <div class="img-produto-desc">
+                <img src="\${imagem}" />
+            </div>
+        </div>
+        <div class="col-12 col-lg-8 col-md-8 col-details-desc">
+            <div id="nomeItem" class="title-desc title-desc-cell">\${nome}</div>
+            <p class="text-details">\${desc}</p>
+            
+            <div class="price-desc mb-3">
+                <span>R$ \${preco}</span>
+            </div>
+
+            <div class="card-adicionais-desc">
+                <div class="row">
+                    <div class="col-6">
+                            <span class="card-adc-title">Adicionais</span> <br>
+                            <span class="card-adc-subtitle">Escolha até 8 opções.</span>
+                    </div>
+                    <div class="col-6 col-icon-desc">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-adicionais-itens" id="cardItensAcomp">
+                
+            </div>
+
+            <div class="row-comentario">
+                <p>Algum comentário?</p>
+                <p id="contador-caracteres" class="numeros-caracteres">0/140</p>
+            </div>
+
+            <div class="container-comentario">
+                <textarea id="comentario" maxlength="140" placeholder="Ex: tirar a cebola, maionese à parte etc." oninput="contarCaracteres()"></textarea>
+            </div>
+
+        </div>
+    `,
+
+    itensAcomp: `
+        <div class="row">
+            <div class="col-6">
+                <p>
+                    \${nome} <span>+ R$ \${preco}</span>
+                </p>
+            </div>
+            <div class="col-3">
+                <div class="img-itens-acomp">
+                    <img src="\${imagem}" />
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="add-itens-acomp">
+                    <span class="btn-menos-desc" onclick="cardapio.metodos.diminuirQuantidadeAcomp('\${id}')" ><i class="fas fa-minus"></i></span>
+                    <span class="add-numero-itens-desc add-numero-acomp" id="qntd-acomp-\${id}">0</span>
+                    <span class="btn-mais-desc pr-0" onclick="cardapio.metodos.aumentarQuantidadeAcomp('\${id}')"><i class="fas fa-plus"></i></span>
+                </div>
+            </div>
+        </div>
+    `,
+
+    btnAdicionarItem: `
+        <div class="add-itens-carrinho">
+            <span class="btn-menos-carrinho" onclick="cardapio.metodos.diminuirQuantidadeDesc('\${id}')" ><i class="fas fa-minus"></i></span>
+            <span class="add-numero-itens-carrinho" id="qntd-desc-\${id}">1</span>
+            <span class="btn-mais-carrinho" onclick="cardapio.metodos.aumentarQuantidadeDesc('\${id}')"><i class="fas fa-plus"></i></span>
+        </div>
+
+        <a id="teste" onclick="cardapio.metodos.adicionarAoCarrinho('\${id}')" class="btn btn-yellow btn-add-carrinho">
+            <span class="spn-add">Adicionar</span> <span class="spn-total" id="totalDesc">R$ \${preco}</span>
+        </a>
     `,
 
     itemCarrinho: `
