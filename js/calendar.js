@@ -50,7 +50,9 @@ const renderCalendar = () => {
     for (let i = lastDayofMonth; i < 6; i++) {
         liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
     }
+    
     currentDate.innerText = `${months[currMonth]} ${currYear}`;
+    console.log(currMonth + currYear);
     daysTag.innerHTML = liTag;
 
 

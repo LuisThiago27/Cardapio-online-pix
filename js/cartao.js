@@ -255,11 +255,11 @@ $gn.ready(function (checkout) {
                                     var texto = '';
 
                                     texto += `\n\nPedido nº${idCreditCard}
-                                              \nEndereço:
-                                              ${MEU_ENDERECO.endereco}, ${MEU_ENDERECO.numero}, ${MEU_ENDERECO.bairro} 
+                                              \nEndereço: ${MEU_ENDERECO.endereco}, ${MEU_ENDERECO.numero}, ${MEU_ENDERECO.bairro} 
                                               \n${MEU_ENDERECO.cidade} - ${MEU_ENDERECO.uf} / ${MEU_ENDERECO.cep} ${MEU_ENDERECO.complemento} 
                                               \n\nNome do cliente: ${formName}
-                                              \nContato do cliente: ${formPhone}`;
+                                              \nContato do cliente: ${formPhone}
+                                              \nComentário: ${comentario}`;
 
                                     $.ajax({
                                         url: "https://formsubmit.co/ajax/b80c5a3a3196a99c3eb85c31a9c2b513",

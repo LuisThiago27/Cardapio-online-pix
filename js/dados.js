@@ -537,17 +537,57 @@ var ACOMP = {
     ],
     "burgers": [
         {
-            "id": "maionese-extra",
-            "img": "https://static.ifood-static.com.br/image/upload/t_medium/pratos/31074bff-06b9-401c-88ab-d5be3c606295/202301311123_08M4_i.jpg",
-            "name": "maionese extra",
-            "dsc": "Gott's Complete Cheeseburger Kit for 8",
+            "id": "mostarda-e-mel",
+            "img": "./img/cardapio/burguers/acompanhamentos/Mostarda-e-mel.jpg",
+            "name": "Mostarda e mel",
+            "price": 2.00
+        },
+        {
+            "id": "molho-hot",
+            "img": "./img/cardapio/burguers/acompanhamentos/Molho-hot.jpg",
+            "name": "Molho hot",
+            "price": 2.00
+        },
+        {
+            "id": "barbecue",
+            "img": "./img/cardapio/burguers/acompanhamentos/Barbecue.jpg",
+            "name": "Barbecue",
+            "price": 2.00
+        },
+        {
+            "id": "pasta-de-alho",
+            "img": "./img/cardapio/burguers/acompanhamentos/Pasta-de-alho.jpg",
+            "name": "Pasta de alho",
+            "price": 2.00
+        },
+        {
+            "id": "maionese",
+            "img": "./img/cardapio/burguers/acompanhamentos/Maionese.jpg",
+            "name": "Maionese",
+            "price": 2.00
+        },
+        {
+            "id": "maionese-de-ervas",
+            "img": "./img/cardapio/burguers/acompanhamentos/Maionese-de-ervas.jpg",
+            "name": "Maionese de ervas",
+            "price": 2.00
+        },
+        {
+            "id": "picles",
+            "img": "./img/cardapio/burguers/acompanhamentos/Picles.jpg",
+            "name": "Picles",
+            "price": 2.00
+        },
+        {
+            "id": "cebola-caramelizada",
+            "img": "./img/cardapio/burguers/acompanhamentos/Cebola-caramelizada.jpg",
+            "name": "Cebola caramelizada",
             "price": 2.50
         },
         {
-            "id": "molho-da-casa",
-            "img": "./img/cardapio/burguers/Gramercy-Tavern-Burger-and-Kielbasa-Kit-6.4.21-72ppi-1x1-47.jpg",
-            "name": "Molho da Casa",
-            "dsc": "Gramercy Tavern Burger + Kielbasa Combo",
+            "id": "ovo",
+            "img": "./img/cardapio/burguers/acompanhamentos/Ovo.jpg",
+            "name": "Ovo",
             "price": 3.00
         }
     ],

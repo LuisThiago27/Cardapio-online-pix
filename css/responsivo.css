@@ -122,6 +122,53 @@
         right: 5px;
         top: 5px;
     }
+
+    .header-desc-item {
+        flex: 0 0 10%;
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header-desc-item span {
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+
+    .col-details-desc {
+        flex: 0 0 35%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .btn-fechar-desc-cell {
+        margin-left: 30px;
+        right: unset;
+        left: 0;
+        top: unset;
+    }
+
+    .btn-fechar-desc-cell i {
+        font-size: 20px;
+        color: var(--color-primary);
+    }
+
+    .card-adicionais-itens .row {
+        align-items: flex-start;
+    }
+
+    .add-itens-acomp {
+        position: relative;
+        top: -25px;
+        justify-content: flex-start;
+    }
+
+    .btn-menos-desc {
+        padding-left: 0;
+    }
 }
 
 /* Tablets e Celulares (col) 0 a 768px  */

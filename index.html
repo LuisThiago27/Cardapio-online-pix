@@ -1020,7 +1020,7 @@
 
     <div class="modal-full animated fadeIn hidden" id="modalItem">
         <div class="m-header m-header-desc">
-            <div class="container">
+            <div class="container no-mobile">
                 <a id="btnFecharCarrinho" class="btn btn-white btn-sm float-right"
                     onclick="cardapio.metodos.fecharModalItem(false);">
                     Fechar
@@ -1187,18 +1187,6 @@
         window.addEventListener("load", updateCalendarText);
         window.addEventListener("resize", updateCalendarText);
 
-    </script>
-
-    <script>
-        function contarCaracteres() {
-            var textarea = document.getElementById("comentario");
-            var contador = document.getElementById("contador-caracteres");
-            
-            var caracteresDigitados = textarea.value.length;
-            var caracteresRestantes = 140 - caracteresDigitados;
-
-            contador.textContent = caracteresDigitados + "/140";
-        }
     </script>
 
 </body>

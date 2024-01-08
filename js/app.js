@@ -15,6 +15,8 @@ var VALOR_ENTREGA = 0.01;
 
 var CELULAR_EMPRESA = '5561981542776';
 
+var comentario = '';
+
 cardapio.eventos = {
     init: () => {
         cardapio.metodos.obterItensCardapio();
@@ -256,8 +258,7 @@ cardapio.metodos = {
         $("#descItensCarrinho").append(temp);
 
         itensAcomp.forEach((itens) => {
-            let temp = cardapio.templates.itensAcomp.replace(/\${desc}/g, itens.dsc)
-                .replace(/\${nome}/g, itens.name)
+            let temp = cardapio.templates.itensAcomp.replace(/\${nome}/g, itens.name)
                 .replace(/\${preco}/g, itens.price.toFixed(2).replace('.', ','))
                 .replace(/\${id}/g, itens.id)
                 .replace(/\${imagem}/g, itens.img)
@@ -323,9 +324,6 @@ cardapio.metodos = {
 
         $("#totalDesc").text('R$ ' + valorAtualizado);
     },
-
-
-
 
     //diminuir a quantidade do item do cardapio
     diminuirQuantidadeAcomp: (id) => {
@@ -588,6 +586,7 @@ cardapio.metodos = {
             });
             $('#total_list').text(totalFormatado);
             $('#valor_total').val(total.replace('.', ''));
+            console.log(comentario);
         } else {
             $("#itensCarrinho").html('<p class="carrinho-vazio animated fadeIn"><i class="fa fa-shopping-bag animated flip"></i>Seu carrinho está vazio.</p>');
             cardapio.metodos.carregarValores();
@@ -829,44 +828,6 @@ cardapio.metodos = {
         $("#resumoEnderecoNotificacao").html(`${MEU_ENDERECO.endereco}, ${MEU_ENDERECO.numero}, ${MEU_ENDERECO.bairro}`);
         $("#cidadeEnderecoNotificacao").html(`${MEU_ENDERECO.cidade} - ${MEU_ENDERECO.uf} / ${MEU_ENDERECO.cep} ${MEU_ENDERECO.complemento}`);
 
-        cardapio.metodos.finalizarPedido();
-
-    },
-
-    //Atualiza o link do botão do WhatsApp
-    finalizarPedido: () => {
-
-        /*if(MEU_CARRINHO.length > 0 && MEU_ENDERECO != null) {
-
-            var texto = 'Olá! gostaria de fazer um pedido:';
-            texto += `\n*Itens do pedido:*\n\n\${itens}`;
-            texto += `\n*Endereço de entrega:*`;
-            texto += `\n${MEU_ENDERECO.endereco}, ${MEU_ENDERECO.numero}, ${MEU_ENDERECO.bairro}`;
-            texto += `\n${MEU_ENDERECO.cidade} - ${MEU_ENDERECO.uf} / ${MEU_ENDERECO.cep} ${MEU_ENDERECO.complemento}`;
-            texto += `\n\n*Total (com entrega): R$ ${(VALOR_CARRINHO + VALOR_ENTREGA).toFixed(2).replace('.', ',')}*`;
-
-            var itens = '';
-
-            $.each(MEU_CARRINHO, (i, e) => {
-
-                itens += `*${e.qntd}x* ${e.name} ....... R$ ${e.price.toFixed(2).replace('.', ',')} \n`;
-
-                //último item
-                if((i + 1) == MEU_CARRINHO.length) {
-
-                    texto = texto.replace(/\${itens}/g, itens);
-                    
-                    //converter a URL
-                    let encode = encodeURI(texto);
-                    let URL = `https://wa.me/${CELULAR_EMPRESA}?text=${encode}`;
-
-                    $("#btnEtapaResumo").attr('href', URL);
-                }
-
-            })
-
-        }*/
-
     },
 
     //atualiza a Etapa de escolher metodo de pagamento
@@ -883,10 +844,8 @@ cardapio.metodos = {
         var texto = '';
         var nomeCompleto = $("#txtName").val().trim();
         var contato = $("#txtContato").val().trim();
-        console.log(nomeCompleto, contato);
 
         $.each(MEU_CARRINHO, (i, e) => {
-
             var total = (VALOR_CARRINHO + VALOR_ENTREGA).toFixed(2);
             itens += `${e.name}....... x${e.qntd}  `;
             //último item
@@ -1027,6 +986,7 @@ cardapio.metodos = {
                                                   \n${MEU_ENDERECO.cidade} - ${MEU_ENDERECO.uf} / ${MEU_ENDERECO.cep} ${MEU_ENDERECO.complemento} 
                                                   \n\nNome do cliente: ${nomeCompleto}
                                                   \nContato do cliente: ${contato}
+                                                  \nComentário: ${comentario}
                                                   \nTXID: ${resultadoTxid}`;
 
                                         $.ajax({
@@ -1171,6 +1131,16 @@ cardapio.metodos = {
             }, 800);
         }, tempo);
 
+    },
+
+    contarCaracteres: () => {
+        var textarea = $("#comentario");
+        var contador = $("#contador-caracteres");
+
+        var caracteresDigitados = textarea.val().length;
+
+        contador.text(caracteresDigitados + "/140");
+        comentario = textarea.val();
     }
 
 
@@ -1202,11 +1172,20 @@ cardapio.templates = {
     `,
 
     descItem: `
-        <div class="col-12 col-lg-4 col-md-4 col-img-produto-desc">
-            <a id="btnFecharCarrinho" class="btn btn-white btn-sm float-right btn-fechar-desc-cell"
+        <div class="col-12 header-desc-item no-desk">
+            <a id="btnFecharCarrinho" class="btn-fechar-desc-cell"
                 onclick="cardapio.metodos.fecharModalItem(false);">
-                Fechar
+                <i class="fa-solid fa-chevron-left"></i>
             </a>
+            <span>\${nome}</span>
+        </div>
+        <div class="col-12 col-lg-4 col-md-4 col-img-produto-desc">
+            <div class="no-mobile">
+                <a id="btnFecharCarrinho" class="btn btn-white btn-sm float-right btn-fechar-desc-cell"
+                    onclick="cardapio.metodos.fecharModalItem(false);">
+                    Fechar
+                </a>
+            </div>
             <div class="img-produto-desc">
                 <img src="\${imagem}" />
             </div>
@@ -1221,11 +1200,11 @@ cardapio.templates = {
 
             <div class="card-adicionais-desc">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-10 col-lg-6 col-md-6">
                             <span class="card-adc-title">Adicionais</span> <br>
                             <span class="card-adc-subtitle">Escolha até 8 opções.</span>
                     </div>
-                    <div class="col-6 col-icon-desc">
+                    <div class="col-2 col-lg-6 col-md-6 col-icon-desc">
                         <i class="fa-solid fa-check"></i>
                     </div>
                 </div>
@@ -1241,7 +1220,7 @@ cardapio.templates = {
             </div>
 
             <div class="container-comentario">
-                <textarea id="comentario" maxlength="140" placeholder="Ex: tirar a cebola, maionese à parte etc." oninput="contarCaracteres()"></textarea>
+                <textarea id="comentario" maxlength="140" placeholder="Ex: tirar a cebola, maionese à parte etc." oninput="cardapio.metodos.contarCaracteres()"></textarea>
             </div>
 
         </div>
@@ -1249,17 +1228,17 @@ cardapio.templates = {
 
     itensAcomp: `
         <div class="row">
-            <div class="col-6">
+            <div class="col-8 col-lg-6 col-md-6">
                 <p>
                     \${nome} <span>+ R$ \${preco}</span>
                 </p>
             </div>
-            <div class="col-3">
+            <div class="col-4 col-lg-3 col-md-3">
                 <div class="img-itens-acomp">
                     <img src="\${imagem}" />
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-12 col-lg-3 col-md-3">
                 <div class="add-itens-acomp">
                     <span class="btn-menos-desc" onclick="cardapio.metodos.diminuirQuantidadeAcomp('\${id}')" ><i class="fas fa-minus"></i></span>
                     <span class="add-numero-itens-desc add-numero-acomp" id="qntd-acomp-\${id}">0</span>
@@ -1276,7 +1255,7 @@ cardapio.templates = {
             <span class="btn-mais-carrinho" onclick="cardapio.metodos.aumentarQuantidadeDesc('\${id}')"><i class="fas fa-plus"></i></span>
         </div>
 
-        <a id="teste" onclick="cardapio.metodos.adicionarAoCarrinho('\${id}')" class="btn btn-yellow btn-add-carrinho">
+        <a onclick="cardapio.metodos.adicionarAoCarrinho('\${id}')" class="btn btn-yellow btn-add-carrinho">
             <span class="spn-add">Adicionar</span> <span class="spn-total" id="totalDesc">R$ \${preco}</span>
         </a>
     `,

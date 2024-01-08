@@ -1524,7 +1524,6 @@ header .current-date {
     flex-direction: column;
     padding: 30px 30px;
     padding-right: 0;
-    display: flex;
     border-bottom: 1px solid #f7f7f7;
 }
 
@@ -1533,6 +1532,7 @@ header .current-date {
     display: flex;
     align-items: center;
     font-family: sans-serif;
+    padding: 20px 0;
 }
 
 .img-itens-acomp img {
@@ -1648,5 +1648,9 @@ header .current-date {
 }
 
 .btn-fechar-desc-cell {
+    display: none;
+}
+
+.no-desk {
     display: none;
 }
