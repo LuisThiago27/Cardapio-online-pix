@@ -134,30 +134,27 @@ cardapio.metodos = {
 
                     idAcompVariaveis.push(variavel);
                 });
-                for (let i = 0; i < idAcompVariaveis.length; i++) {
-                    if (idAcompVariaveis[i].qntd > 0) {
-                        for (let i = 0; i < ITENS_ACOMP.length; i++) {
-                            console.log(ITENS_ACOMP)
-                            var qntdAcomp = idAcompVariaveis[i].qntd;
-
-                            if (qntdAcomp > 0) {
-                                var idAcomp = ITENS_ACOMP[i].id;
-
-                                let existe = $.grep(MEU_CARRINHO, (elem, index) => { return elem.id == idAcomp });
-
-                                if (existe.length > 0) {
-                                    let objIndex = MEU_CARRINHO.findIndex((obj => obj.id == idAcomp));
-                                    MEU_CARRINHO[objIndex].qntd = MEU_CARRINHO[objIndex].qntd + idAcompVariaveis[i].qntd;
-                                }
-                                else {
-                                    ITENS_ACOMP[i].qntd = qntdAcomp;
-                                    MEU_CARRINHO.push(ITENS_ACOMP[i]);
-                                    console.log(MEU_CARRINHO)
-                                }
+                if (idAcompVariaveis.some(item => item.qntd > 0)) {
+                
+                    for (let i = 0; i < ITENS_ACOMP.length; i++) {
+                        var qntdAcomp = idAcompVariaveis[i].qntd;
+                
+                        if (qntdAcomp > 0) {
+                            var idAcomp = ITENS_ACOMP[i].id;
+                
+                            let existe = $.grep(MEU_CARRINHO, (elem, index) => { return elem.id == idAcomp });
+                
+                            if (existe.length > 0) {
+                                let objIndex = MEU_CARRINHO.findIndex((obj => obj.id == idAcomp));
+                                MEU_CARRINHO[objIndex].qntd = MEU_CARRINHO[objIndex].qntd + idAcompVariaveis[i].qntd;
+                            } else {
+                                ITENS_ACOMP[i].qntd = qntdAcomp;
+                                MEU_CARRINHO.push(ITENS_ACOMP[i]);
                             }
                         }
                     }
                 }
+                
 
                 ITENS_ACOMP = [];
 
@@ -325,7 +322,7 @@ cardapio.metodos = {
         $("#totalDesc").text('R$ ' + valorAtualizado);
     },
 
-    //diminuir a quantidade do item do cardapio
+    //diminuir a quantidade do acompanhamento do item do cardapio
     diminuirQuantidadeAcomp: (id) => {
         let qntdAtual = parseInt($("#qntd-acomp-" + id).text());
         let btnMais = $(".btn-mais-desc");
@@ -342,7 +339,7 @@ cardapio.metodos = {
         }
     },
 
-    //aumentar a quantidade do item do cardapio
+    //aumentar a quantidade do acompanhamento do item do cardapio
     aumentarQuantidadeAcomp: (id) => {
         let qntdAtual = parseInt($("#qntd-acomp-" + id).text());
         let btnMais = $(".btn-mais-desc");
@@ -586,7 +583,7 @@ cardapio.metodos = {
             });
             $('#total_list').text(totalFormatado);
             $('#valor_total').val(total.replace('.', ''));
-            console.log(comentario);
+            console.log(MEU_CARRINHO);
         } else {
             $("#itensCarrinho").html('<p class="carrinho-vazio animated fadeIn"><i class="fa fa-shopping-bag animated flip"></i>Seu carrinho está vazio.</p>');
             cardapio.metodos.carregarValores();
