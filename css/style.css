@@ -1023,21 +1023,16 @@ select.form-control {
 .modalReservaFull {
     display: flex;
     align-items: center;
-    padding: 0 10px;
-    justify-content: center;
+    padding: 0;
     min-height: 100vh;
     background: var(--color-secondary);
 }
 
-.btn-fechar-reserva {
+.container-reservar {
     width: 100%;
-    position: absolute;
-    top: 20px;
     display: flex;
-    justify-content: space-between;
-    align-content: end;
+    flex-direction: column;
 }
-
 .wrapper {
     width: 450px;
     background: #fff;
@@ -1198,42 +1193,11 @@ header .current-date {
   .select-menu.active .select-btn i {
     transform: rotate(-180deg);
   }
+
   
-  .select-menu .options {
-    display: none;
-    position: relative;
-    padding: 20px;
-    margin-top: 10px;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-  }
+
   
-  .select-menu.active .options {
-    display: block;
-    position: absolute;
-    width: 320px;
-  }
-  
-  .options .option {
-    display: flex;
-    height: 30px;
-    cursor: pointer;
-    padding: 0 16px;
-    border-radius: 8px;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-  }
-  
-  .options .option:hover {
-    background-color: #f2f2f2;
-  }
-  
-  .option .option-text {
-    font-size: 18px;
-    color: #333;
-  }
+
 
   .schedule-container button {
     background-color: #007bff;
@@ -1653,4 +1617,212 @@ header .current-date {
 
 .no-desk {
     display: none;
+}
+
+
+
+
+
+
+/* calendar */
+#calendar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btn-fechar-reserva {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--color-white);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+}
+
+.btn-fechar-reserva img {
+    width: 120px;
+}
+
+.btn-fechar-reserva .btn-white {
+    padding: 15px 25px;
+    height: 100%;
+}
+
+.day {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+.m-header-reserva {
+    width: 100%;
+    padding-bottom: 0;
+    z-index: 1;
+}
+
+.m-body-reserva {
+    width: 100%;
+    overflow: auto;
+}
+
+.m-body-reserva::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+.m-body-reserva::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+.m-body-reserva::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.container-reserva {
+    max-width: 650px;
+    background-color: var(--color-white);
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px, rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
+}
+
+.content-text-reserva {
+    text-align: center;
+    padding: 10px 0 20px 0;
+}
+
+.content-text-reserva h3 {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.content-text-reserva p {
+    color: var(--color-text);
+    font-size: 18px;
+    font-weight: 400;
+    font-family: sans-serif;
+}
+
+.day {
+    border-radius: 4px;
+}
+
+.day-selected {
+    border: 1px solid #F37021;
+}
+
+.btn-days {
+    text-decoration: none !important;
+    color: var(--color-text);
+    font-size: 18px;
+}
+
+.btn-days:hover {
+    color: var(--color-text);
+}
+
+.btn-days i {
+    padding: 10px;
+    color: #F37021;
+}
+
+.btn-days i:hover {
+    background-color: #ffbf0018;
+    border-radius: 50px;
+}
+
+.options {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.option {
+    flex-basis: 23%;
+    /* Adjust as needed to leave some space between items */
+    margin-bottom: 10px;
+    /* Adjust as needed to leave some space between rows */
+}
+
+.option-text {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: #f37221ce;
+    color: var(--color-white);
+    border: 1px solid #f37221ce;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px -1px;
+}
+
+.option-text:hover {
+    background-color: #F37021;
+    border: 1px solid #F37021;
+}
+
+
+/* Modal Confirmação reserva */
+.modal-confirmacao-reserva{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    max-width: 650px;
+    width: 100%;
+    background-color: #fff; 
+    opacity: 1;
+    border-radius: 5px;
+}
+
+.modal-header {
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.modal-header h5 {
+    font-size: 20px;
+    padding: 0 10px !important;
+    color: var(--color-black);
+    margin-bottom: 0;
+}
+
+.modal-body-confim-reserva {
+    padding: 20px 40px;
+}
+
+.modal-body-confim-reserva p, h5 {
+    font-size: 17px;
+}
+
+.modal-footer-confirm-reserva {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+}
+
+.close-modal-button-reserva {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+}
+
+#agendar_reserva {
+    font-size: 18px;
+    background-color: #ffbf00bd;
+}
+
+#agendar_reserva:hover {
+    background-color: #ffbf00;
 }

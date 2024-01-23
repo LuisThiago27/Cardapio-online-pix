@@ -1111,6 +1111,12 @@ cardapio.metodos = {
         location.reload();
     },
 
+    //Fechar modal da Confirmação Reserva
+    fecharConfirmacaoReserva: () => {
+        $("#modal_overlay_reserva").addClass("hidden");
+        $("#confirmar_reserva").addClass("hidden");
+    },
+
     //mensagens
     mensagem: (texto, cor = 'red', tempo = 3500) => {
 

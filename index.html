@@ -1049,87 +1049,51 @@
 
     </div>
 
-    <div class="modal-full modalReservaFull animated fadeIn hidden" id="modalReserva">
-        <div class="container btn-fechar-reserva">
-            <a onclick="cardapio.metodos.voltarEtapaReserva();" class="btn btn-white float-right mr-3 none"
-                id="btnVoltarReserva">
-                <i class="fa-solid fa-arrow-left" style="font-size: 26px; color: #4f4f4f;"></i>
-            </a>
-            <a id="btnTransparent"></a>
-            <a class="btn btn-white float-right" onclick="cardapio.metodos.abrirReserva(false);">
-                Fechar
-            </a>
-        </div>
+    <div class="modal-full modalReservaFull animated fadeIn " id="modalReserva">
+        <div class="m-header m-header-reserva">
+            <div class="btn-fechar-reserva">
 
-        <div class="wrapper">
-            <h3>Escolha uma data para agendar</h3>
-            <header>
-                <p class="current-date"></p>
-                <div class="icons">
-                    <span id="prev" class="material-symbols-rounded">chevron_left</span>
-                    <span id="next" class="material-symbols-rounded">chevron_right</span>
-                </div>
-            </header>
-            <div class="calendar">
-                <ul class="weeks">
-                    <li>Dom</li>
-                    <li>Seg</li>
-                    <li>Ter</li>
-                    <li>Qua</li>
-                    <li>Qui</li>
-                    <li>Sex</li>
-                    <li>Sab</li>
-                </ul>
-                <ul class="days">
-                    <!--dias do js-->
-                </ul>
-                <p class="text-info"><i class="fa-solid fa-circle-info"></i> Não abrimos aos Domingos!</p>
+                <img src="img/logo.png" />
+                <a id="btnTransparent"></a>
+                <a class="btn btn-white float-right" onclick="cardapio.metodos.abrirReserva(false);">
+                    Fechar
+                </a>
             </div>
         </div>
 
-        <div class="schedule-container none">
-            <h2>Escolha um horário para agendar</h2>
-            <div class="select-menu">
-                <div class="select-btn">
-                    <span class="sBtn-text">Selecione um horário</span>
-                    <i class="fa-solid fa-caret-down"></i>
+        <div class="m-body-reserva">
+            <div class="container container-reserva">
+                <div class="content-text-reserva">
+                    <h3>Reserve seu horário</h3>
+                    <p>Disponibilidade de horários flexíveis.</p>
+                </div>
+                <div class="accordion" id="accordionExample">
+                    <!--Conteudo do collapse-->
                 </div>
 
-                <ul class="options">
-                    <li class="option">
-                        <span class="option-text">12:00</span>
-                    </li>
-                    <li class="option">
-                        <span class="option-text">12:30</span>
-                    </li>
-                    <li class="option">
-                        <span class="option-text">13:00</span>
-                    </li>
-                    <li class="option">
-                        <span class="option-text">13:30</span>
-                    </li>
-                    <li class="option">
-                        <span class="option-text">14:00</span>
-                    </li>
-                    <li class="option">
-                        <span class="option-text">19:00</span>
-                    </li>
-                    <li class="option">
-                        <span class="option-text">20:00</span>
-                    </li>
-                    <li class="option">
-                        <span class="option-text">21:00</span>
-                    </li>
-                    <li class="option">
-                        <span class="option-text">22:00</span>
-                    </li>
-                </ul>
-
+                <div class="modal-confirmacao-reserva hidden" id="confirmar_reserva">
+                    <div class="modal-header">
+                        <h5 class="modal_confirmacao_reserva_Label">Confirmação da Reserva</h5>
+                        <button type="button" class="btn-close close-modal-button" onclick="cardapio.metodos.fecharConfirmacaoReserva();"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+    
+                    <div class="modal-body-confim-reserva">
+                        <p>Recebemos a sua solicitação de reserva. Estamos felizes em confirmar a disponibilidade para a data e horário solicitados.</p>
+                        <p>Seguem os detalhes da sua reserva:</p>
+                        <p>
+                            <h5><b>Data: </b><span id="reserva_date"></span></h5>
+                            <h5><b>Horário: </b><span id="reserva_hour"></span></h5>
+                        </p>
+                        <p>Confirme ou cancele o agendamento, clicando nos botões abaixo.</p>
+                    </div>
+                    <div class="modal-footer modal-footer-confirm-reserva">
+                        <button type="button" class="btn close-modal-button-reserva" onclick="cardapio.metodos.fecharConfirmacaoReserva();" >Cancelar</button>
+                        <button id="agendar_reserva" type="button" class="btn btn-yellow">Agendar</button>
+                    </div>
+                </div>
+                <div class="modal-overlay hidden" id="modal_overlay_reserva"></div>
             </div>
-            <button id="schedule-button">Agendar</button>
-            <p id="schedule-result"></p>
         </div>
-
     </div>
 
 
@@ -1142,7 +1106,7 @@
     <script type="text/javascript" src="./js/dados.js"></script>
     <script type="text/javascript" src="./js/app.js"></script>
     <script type="text/javascript" src="./js/cartao.js"></script>
-    <script type="text/javascript" src="./js/calendar.js"></script>
+    <script type="text/javascript" src="./js/calendarOutro.js"></script>
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 
     <script>new WOW().init();</script>
@@ -1161,31 +1125,6 @@
 
         const telefoneInput = document.getElementById('txtContato');
         telefoneInput.addEventListener('input', mascaraTelefone);
-
-        // Verifica a largura da tela e atualiza o texto do mês e dos dias conforme necessário
-        function updateCalendarText() {
-            const screenWidth = window.innerWidth;
-
-            if (screenWidth <= 450) {
-                // Reduz o texto do mês e dos dias
-                document.querySelector(".current-date").textContent = "Out. 2023";
-                const days = document.querySelectorAll(".weeks li");
-                days.forEach(day => {
-                    day.textContent = day.textContent.charAt(0);
-                });
-            } else {
-                // Restaura o texto original
-                document.querySelector(".current-date").textContent = "Outubro 2023";
-                const days = document.querySelectorAll(".weeks li");
-                days.forEach((day, index) => {
-                    day.textContent = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"][index];
-                });
-            }
-        }
-
-        // Atualiza o texto do calendário na carga inicial e quando a janela for redimensionada
-        window.addEventListener("load", updateCalendarText);
-        window.addEventListener("resize", updateCalendarText);
 
     </script>
 

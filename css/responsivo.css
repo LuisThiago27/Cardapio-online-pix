@@ -169,6 +169,68 @@
     .btn-menos-desc {
         padding-left: 0;
     }
+
+
+    .modal-full.modalReservaFull {
+        padding: 0 !important;
+    }
+
+    .m-body-reserva {
+        padding: 10px;
+    }
+
+    .btn-fechar-reserva img {
+        width: 100px;
+    }
+
+    .btn-fechar-reserva .btn-white {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .btn-days {
+        font-size: 16px;
+        padding: 8px 5px;
+    }
+
+    .btn-days i {
+        padding: 0;
+    }
+
+    .content-text-reserva h3 {
+        font-size: 22px;
+    }
+
+    .content-text-reserva p {
+        font-size: 18px;
+    }
+
+    .modal-confirmacao-reserva {
+        max-width: 320px;
+    }
+
+    .modal-body-confim-reserva {
+        padding: 20px;
+    }
+
+    .modal-header h5 {
+        font-size: 18px;
+        padding: 0 !important;
+    }
+
+    .modal-body-confim-reserva p, h5 {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+
+    .modal-footer-confirm-reserva {
+        padding: 10px 20px;
+    }
+
+    #agendar_reserva {
+        font-size: 16px;
+        background-color: #ffbf00bd;
+    }
 }
 
 /* Tablets e Celulares (col) 0 a 768px  */
