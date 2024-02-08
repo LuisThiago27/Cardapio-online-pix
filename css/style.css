@@ -24,9 +24,11 @@
     --color-separate: #cccccc;
 }
 
-html,
-body {
+html {
     scroll-behavior: smooth;
+}
+
+body {
     font-family: 'PoppinsRegular', 'sans-serif';
     background-color: var(--color-background);
     color: var(--color-text);
@@ -564,15 +566,51 @@ footer {
 
 .modal-full .item-carrinho {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     padding: 20px 0;
     border-bottom: 1px solid var(--color-separate);
+}
+
+.modal-full .item-carrinho.resumo{
+    flex-direction: row !important;
 }
 
 .modal-full .item-carrinho:last-child {
     border-bottom: none;
 }
+
+.modal-full .container-item-carrinho {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.modal-full .acomp-carrinho {
+    display: flex;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.modal-full .col-qntd-acomp {
+    display: flex;
+    justify-content: end;
+    padding-right: 0;
+    margin-bottom: 3px;
+}
+
+.modal-full .col-qntd-acomp span {
+    background-color: #f2f2f2;
+    width: 35px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.modal-full .col-item-acomp {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 3px;
+}
+
 
 .modal-full .img-produto img {
     width: 100px;
@@ -725,6 +763,26 @@ select.form-control {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.badge-edit-carrinho {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background-color: var(--color-white);
+    border-radius: 50px;
+    right: -5px;
+    top: -5px;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.1);
+}
+
+.badge-edit-carrinho i {
+    color: var(--color-primary);
 }
 
 .botao-carrinho {
@@ -1425,11 +1483,15 @@ header .current-date {
 }
 
 .img-produto-desc {
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .img-produto-desc img {
-    max-width: 500px;
+    max-width: 100%;
+    height: auto;
+    max-height: 40vh;
 }
 
 .content-title-desc {
@@ -1562,6 +1624,7 @@ header .current-date {
 }
 
 .btn-add-carrinho {
+    display: block;
     font-size: 16px;
 }
 

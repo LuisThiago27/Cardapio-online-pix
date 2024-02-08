@@ -89,14 +89,13 @@
 
     .img-produto-desc {
         width: 100%;
-        height: 300px; /* Defina a altura desejada */
         overflow: hidden; 
     }
 
     .img-produto-desc img {
         width: 100%;
-      height: 100%;
-      object-fit: cover;
+        max-height: 35vh;
+        object-fit: cover;
     }
 
     .m-header-desc {
@@ -230,6 +229,10 @@
     #agendar_reserva {
         font-size: 16px;
         background-color: #ffbf00bd;
+    }
+
+    .no-cell-overflow {
+        overflow: hidden !important;
     }
 }
 
@@ -394,7 +397,7 @@
     }
 
     .modal-full .img-produto img {
-        width: 50px;
+        width: 60px;
     }
 
     .modal-full .dados-produto {
