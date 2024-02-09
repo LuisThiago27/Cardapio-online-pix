@@ -338,6 +338,7 @@ cardapio.metodos = {
     },
 
     addTemp: (itens) => {
+
         let temp = cardapio.templates.itensAcomp.replace(/\${nome}/g, itens.name)
             .replace(/\${preco}/g, itens.price.toFixed(2).replace('.', ','))
             .replace(/\${id}/g, itens.id)
@@ -356,6 +357,7 @@ cardapio.metodos = {
         ITENS_ACOMP.push(dataItensAcomp);
 
         $("#cardItensAcomp").append(temp);
+
     },
 
     //carrega a lista de descrição do item do carrinho
@@ -431,11 +433,41 @@ cardapio.metodos = {
 
         let qntdAtual = parseInt($("#qntd-desc-" + id).text());
         let comentarioAtual = $("#comentario-" + id).val();
+        let totalDescAtual = parseFloat($("#totalDesc").text().replace('R$ ', '').replace(',', '.'));
+        
+        ITENS_ACOMP.forEach((e) => {
+            let idAcompanhamento = e.id;
+            
+            let qntdAcompsAtual = parseInt($("#qntd-acomp-" + idAcompanhamento).text());
+            
+            if (qntdAcompsAtual > 0) {
+                
+                if (objIndex !== -1) {
+                    let acompIndex = MEU_CARRINHO[objIndex].acomp.findIndex((acomp) => acomp.id === idAcompanhamento);
+        
+                    if (acompIndex !== -1) {
+                        MEU_CARRINHO[objIndex].acomp[acompIndex].qntd = qntdAcompsAtual;
+                    } else {
+                        let objAcomp = ITENS_ACOMP.find((item) => item.id === idAcompanhamento);
+                        MEU_CARRINHO[objIndex].acomp.push({
+                            id: objAcomp.id,
+                            name: objAcomp.name,
+                            img: objAcomp.img,
+                            price: objAcomp.price,
+                            qntd: qntdAcompsAtual
+                        });
+                    }
+                }
+            }
+        });
 
         MEU_CARRINHO[objIndex].qntd = qntdAtual;
         if (comentarioAtual.trim() !== '') {
             MEU_CARRINHO[objIndex].comentario = comentarioAtual;
         }
+        MEU_CARRINHO[objIndex].totalPrice = totalDescAtual;
+
+        ITENS_ACOMP = [];
         
         cardapio.metodos.mensagem('O item foi alterado', 'green');
         $("#modalItem").addClass('hidden');
@@ -794,14 +826,18 @@ cardapio.metodos = {
 
     //remover item do carrinho
     removerItemCarrinho: (id) => {
-
-        MEU_CARRINHO = $.grep(MEU_CARRINHO, (e, i) => { return e.id != id });
-        cardapio.metodos.carregarCarrinho();
-
-        //atualiza o botão carrinho com a quantidade atual
-        cardapio.metodos.atualizaBadgeTotal();
-
+        let indexToRemove = MEU_CARRINHO.findIndex((item) => item.id === id);
+    
+        if (indexToRemove !== -1) {
+            let itemRemovido = MEU_CARRINHO.splice(indexToRemove, 1)[0];
+            itemRemovido.acomp = [];
+    
+            cardapio.metodos.carregarCarrinho();
+            cardapio.metodos.atualizaBadgeTotal();
+        }
     },
+    
+    
 
     //atualiza o carrinho com a quantidade atual
     atualizarCarrinho: (id, qntd) => {
