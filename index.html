@@ -399,25 +399,27 @@
     <div class="modal-full animated fadeIn hidden" id="modalCarrinho">
         <div class="m-header">
             <div class="container">
-                <a id="btnFecharCarrinho" class="btn btn-white btn-sm float-right"
-                    onclick="cardapio.metodos.abrirCarrinho(false);">
-                    Fechar
-                </a>
-                <a id="btnCancelarPagamento" class="btn btn-white btn-sm float-right hidden"
-                    onclick="cardapio.metodos.cancelarPagamento();">
-                    Fechar
-                </a>
-                <a id="btnFecharPagamento" class="btn btn-white btn-sm float-right hidden"
-                    onclick="cardapio.metodos.fecharPagamento();">
-                    Fechar
-                </a>
-                <div class="etapas">
-                    <div class="etapa etapa1 active">1</div>
-                    <div class="etapa etapa2">2</div>
-                    <div class="etapa etapa3">3</div>
-                </div>
-                <div class="etapas">
-                    <div class="etapa-finalizando hidden">Finalizando pagamento...</div>
+                <div class="container-etapa">
+                    <div class="etapas">
+                        <div class="etapa etapa1 active">1</div>
+                        <div class="etapa etapa2">2</div>
+                        <div class="etapa etapa3">3</div>
+                    </div>
+                    <div class="container-etapa-finalizando hidden">
+                        <div class="etapa-finalizando">Finalizando...</div>
+                    </div>
+                    <a id="btnFecharCarrinho" class="btn btn-white btn-sm float-right"
+                        onclick="cardapio.metodos.abrirCarrinho(false);">
+                        Fechar
+                    </a>
+                    <a id="btnCancelarPagamento" class="btn btn-white btn-sm float-right hidden"
+                        onclick="cardapio.metodos.cancelarPagamento();">
+                        Fechar
+                    </a>
+                    <a id="btnFecharPagamento" class="btn btn-white btn-sm float-right hidden"
+                        onclick="cardapio.metodos.fecharPagamento();">
+                        Fechar
+                    </a>
                 </div>
                 <p class="title-carrinho mt-4">
                     <b id="lblTituloEtapa">Seu carrinho:</b>
@@ -569,7 +571,7 @@
                 <div id="metodoPagamento" class="modalPagamentos animated fadeIn hidden">
 
                     <div class="row row-method mr-0 ml-0 animated fadeIn mt-3 mb-3">
-                        <div class="col-5 col-lg-5 col-md-12 col-sm-12" style="margin-left: -70px;">
+                        <div class="col-5 col-lg-5 col-md-12 col-sm-12 col-pix" style="margin-left: -70px;">
                             <a onclick="cardapio.metodos.carregarPagamentoPix();">
                                 <div class="card-pagamento card-pix">
                                     <div class="icon-payment icon-pix">
@@ -853,7 +855,7 @@
                                 <hr class="my-4">
 
                                 <div id="areaBotoes" class="row g-3">
-                                    <div class="col-6 mb-3">
+                                    <div class="col-12 col-lg-6 col-md-12 col-sm-12 mb-3">
                                         <button class="w-100 btn btn-primary btn-lg" id="ver_parcelas" type="button"><i
                                                 class="bi bi-arrow-right-short"></i> Definir
                                             parcelas</button>
@@ -861,7 +863,7 @@
                                         <!-- número de parcelas escolhido -->
                                         <input type="text" class="form-control hidden" name="parcelas" id="parcelas">
                                     </div>
-                                    <div class="col-6 mb-3">
+                                    <div class="col-12 col-lg-6 col-md-12 col-sm-12 mb-3">
                                         <button class="w-100 btn btn-secondary btn-lg disabled" id="confirmar_pagamento"
                                             type="button">Confirmar pagamento</button>
                                     </div>

@@ -674,8 +674,8 @@ cardapio.metodos = {
             $("#pagamentoPix").removeClass('hidden');
             $("#pagamentoCard").addClass('hidden');
 
-            $(".etapa-finalizando").removeClass('hidden');
-            $(".etapa").addClass('hidden');
+            $(".container-etapa-finalizando").removeClass('hidden');
+            $(".etapas").addClass('hidden');
 
             $("#btnEtapaPedido").addClass('hidden');
             $("#btnEtapaEndereco").addClass('hidden');
@@ -696,8 +696,8 @@ cardapio.metodos = {
             $("#pagamentoPix").addClass('hidden');
             $("#pagamentoCard").removeClass('hidden');
 
-            $(".etapa-finalizando").removeClass('hidden');
-            $(".etapa").addClass('hidden');
+            $(".container-etapa-finalizando").removeClass('hidden');
+            $(".etapas").addClass('hidden');
 
             $("#btnEtapaPedido").addClass('hidden');
             $("#btnEtapaEndereco").addClass('hidden');
@@ -1434,7 +1434,7 @@ cardapio.templates = {
             </div>
 
             <div class="row-comentario">
-                <p>Algum comentário?</p>
+                <p><i class="fa-solid fa-comment-dots"></i> Algum comentário?</p>
                 <p id="contador-caracteres" class="numeros-caracteres">0/140</p>
             </div>
 
