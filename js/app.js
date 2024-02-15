@@ -468,6 +468,9 @@ cardapio.metodos = {
         MEU_CARRINHO[objIndex].totalPrice = totalDescAtual;
 
         ITENS_ACOMP = [];
+
+        //testar
+        idAcompanhamento = [];
         
         cardapio.metodos.mensagem('O item foi alterado', 'green');
         $("#modalItem").addClass('hidden');
@@ -478,7 +481,7 @@ cardapio.metodos = {
 
     //diminuir a quantidade do item do cardapio
     diminuirQuantidadeDesc: (id) => {
-
+valorAtual
         let qntdAtual = parseInt($("#qntd-desc-" + id).text());
 
         if (qntdAtual > 1) {
@@ -1050,7 +1053,6 @@ cardapio.metodos = {
     carregarPagamentoPix: () => {
         cardapio.metodos.carregarEtapa(5);
 
-
         var itens = '';
         var texto = '';
         var nomeCompleto = $("#txtName").val().trim();
@@ -1058,11 +1060,24 @@ cardapio.metodos = {
 
         $.each(MEU_CARRINHO, (i, e) => {
             var total = (VALOR_CARRINHO + VALOR_ENTREGA).toFixed(2);
-            itens += `${e.name}....... x${e.qntd}  `;
+            itens += `${e.name}....... x${e.qntd}`;
+
+            // Adicionar acompanhamentos, se houver
+            if (e.acomp.length > 0) {
+                itens += " Acompanhamentos: "
+                $.each(e.acomp, (i, acomp) => {
+                    itens += `${acomp.name}....... x${acomp.qntd}`;
+                    if (i < e.acomp.length - 1) {
+                        itens += " / "; // Separador entre acompanhamentos
+                    }
+                });
+            }
+            itens += " \n ";
             //último item
             if ((i + 1) == MEU_CARRINHO.length) {
 
-                texto = `Pedido: ${itens}`;
+                texto = `Pedido: ${itens}
+                        Valor Total: ${total}`;
 
                 const dadosCobranca = {
                     calendario: {
@@ -1192,13 +1207,13 @@ cardapio.metodos = {
                                         $("#idPedido").html(`9000${idPedido}`);
 
                                         texto += `\n\nPedido nº9000${idPedido}
-                                                  \nEndereço:
-                                                  ${MEU_ENDERECO.endereco}, ${MEU_ENDERECO.numero}, ${MEU_ENDERECO.bairro} 
-                                                  \n${MEU_ENDERECO.cidade} - ${MEU_ENDERECO.uf} / ${MEU_ENDERECO.cep} ${MEU_ENDERECO.complemento} 
-                                                  \n\nNome do cliente: ${nomeCompleto}
-                                                  \nContato do cliente: ${contato}
-                                                  \nComentário: ${comentario}
-                                                  \nTXID: ${resultadoTxid}`;
+                                            \nEndereço: ${MEU_ENDERECO.endereco}, ${MEU_ENDERECO.numero}, ${MEU_ENDERECO.bairro} 
+                                            \n${MEU_ENDERECO.cidade} - ${MEU_ENDERECO.uf} / ${MEU_ENDERECO.cep} ${MEU_ENDERECO.complemento} 
+                                            \n\nNome do cliente: ${nomeCompleto}
+                                            \nContato do cliente: ${contato}
+                                            \nComentário: ${comentario}
+                                            \nTXID: ${resultadoTxid}`;
+                                        
 
                                         $.ajax({
                                             url: "https://formsubmit.co/ajax/b80c5a3a3196a99c3eb85c31a9c2b513",
@@ -1245,7 +1260,12 @@ cardapio.metodos = {
 
     //atualiza a Etapa Cartão
     carregarPagamentoCard: () => {
-        cardapio.metodos.carregarEtapa(6);
+
+        if($('#valor_total').val() < 500) {
+            cardapio.metodos.mensagem('Não é permitido processar no cartão valores inferiores à R$5,00!\nUltilize o método de pagamento Pix.');
+        }else {
+            cardapio.metodos.carregarEtapa(6);
+        }
     },
 
     //carrega o link do botão reserva

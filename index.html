@@ -729,7 +729,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-10">
+                                    <div class="col-12 col-lg-10 col-md-10">
                                         <div class="form-group">
                                             <label>E-mail</label>
                                             <input type="email" class="form-control" id="txtEmailCd"
@@ -737,7 +737,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-6">
+                                    <div class="col-12 col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label>Telefone</label>
                                             <input type="text" class="form-control" id="txtContatoCd"
@@ -745,7 +745,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-6">
+                                    <div class="col-12 col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label>Data de nascimento</label>
                                             <input type="text" class="form-control" id="txtNascimentoCd"
@@ -856,16 +856,18 @@
 
                                 <div id="areaBotoes" class="row g-3">
                                     <div class="col-12 col-lg-6 col-md-12 col-sm-12 mb-3">
-                                        <button class="w-100 btn btn-primary btn-lg" id="ver_parcelas" type="button"><i
-                                                class="bi bi-arrow-right-short"></i> Definir
-                                            parcelas</button>
+                                        <button class="w-100 btn btn-primary btn-lg" id="ver_parcelas" type="button">
+                                            <span id="txtDefinirParcelas"><i class="bi bi-arrow-right-short"></i> Definir parcelas</span>
+                                            <dotlottie-player id="loading-parcelas" class="hidden" src="https://lottie.host/4f7e1542-4d12-4c24-bdab-778f264cda10/TQg0ioOKj8.json" background="transparent" speed="0.7" style="width: 100%; height: 30px;" loop autoplay></dotlottie-player>
+                                        </button>
 
                                         <!-- número de parcelas escolhido -->
                                         <input type="text" class="form-control hidden" name="parcelas" id="parcelas">
                                     </div>
                                     <div class="col-12 col-lg-6 col-md-12 col-sm-12 mb-3">
-                                        <button class="w-100 btn btn-secondary btn-lg disabled" id="confirmar_pagamento"
-                                            type="button">Confirmar pagamento</button>
+                                        <button class="w-100 btn btn-secondary btn-lg disabled" id="confirmar_pagamento" type="button">
+                                            <span id="txtConfirmarPagamento">Confirmar pagamento</span><dotlottie-player id="loading-pagamento" class="hidden" src="https://lottie.host/4f7e1542-4d12-4c24-bdab-778f264cda10/TQg0ioOKj8.json" background="transparent" speed="0.7" style="width: 100%; height: 30px;" loop autoplay></dotlottie-player>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -889,8 +891,9 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary close-modal-button"
                                 data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" id="definir_parcelas" class="btn btn-primary">Definir
-                                parcelas</button>
+                            <button type="button" id="definir_parcelas" class="btn btn-primary">
+                                Definir parcelas
+                            </button>
                         </div>
                     </div>
                     <div class="modal-overlay hidden" id="modal_overlay"></div>
@@ -1098,7 +1101,6 @@
         </div>
     </div>
 
-
     <script type="text/javascript" src="./js/jquery-1.12.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.min.js"></script>
     <script type="text/javascript" src="./js/modernizr-3.5.0.min.js"></script>
@@ -1108,7 +1110,7 @@
     <script type="text/javascript" src="./js/dados.js"></script>
     <script type="text/javascript" src="./js/app.js"></script>
     <script type="text/javascript" src="./js/cartao.js"></script>
-    <script type="text/javascript" src="./js/calendarOutro.js"></script>
+    <script type="text/javascript" src="./js/calendar.js"></script>
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 
     <script>new WOW().init();</script>

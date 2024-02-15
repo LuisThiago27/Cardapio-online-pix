@@ -525,6 +525,15 @@
         width: 100%;
     }
 
+    .badge-edit-carrinho {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+        right: -5px;
+        top: -5px;
+        left: unset;
+    }
+
 }
 
 /* Desktop e Tablets (col-md) 768px a 1024px  */

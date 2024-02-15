@@ -1,134 +1,117 @@
-const daysTag = document.querySelector(".days"),
-currentDate = document.querySelector(".current-date"),
-prevNextIcon = document.querySelectorAll(".icons span");
-const text = document.querySelector(".text-info");
-const scheduleContainer = document.querySelector(".schedule-container");
-const calendar = document.querySelector(".wrapper");
-const optionMenu = document.querySelector(".select-menu");
-const btnBack = document.getElementById("btnVoltarReserva");
-const btnTransparent = document.getElementById("btnTransparent");
-selectBtn = optionMenu.querySelector(".select-btn");
-options = optionMenu.querySelectorAll(".option");
-sBtnText = optionMenu.querySelector(".sBtn-text");
-let textDateSelected = '';
+document.addEventListener('DOMContentLoaded', function () {
+  function getDayOfWeek(date) {
+    const daysOfWeek = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+    return daysOfWeek[date.getDay()];
+  }
 
-let date = new Date(),
-    currYear = date.getFullYear(),
-    currMonth = date.getMonth();
-
-const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho",
-    "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-
-const renderCalendar = () => {
-    let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(),
-    lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(),
-    lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(),
-    lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate();
-    let liTag = "";
-
-    for (let i = firstDayofMonth; i > 0; i--) {
-        liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
-    }
-
-    for (let i = 1; i <= lastDateofMonth; i++) {
-        let isToday = i === date.getDate() && currMonth === new Date().getMonth()
-            && currYear === new Date().getFullYear() ? "active" : "";
-
-        if (i < date.getDate() && currMonth === new Date().getMonth()
-            && currYear === new Date().getFullYear()) {
-            isToday = "inactive"
-        }
-        if (currMonth < new Date().getMonth() && currYear === new Date().getFullYear()) {
-            isToday = "inactive"
-        }
-        if (currYear < new Date().getFullYear()) {
-            isToday = "inactive"
-        }
-        liTag += `<li id="${i}" class="${isToday}">${i}</li>`;
-    }
-
-    for (let i = lastDayofMonth; i < 6; i++) {
-        liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
-    }
-    
-    currentDate.innerText = `${months[currMonth]} ${currYear}`;
-    console.log(currMonth + currYear);
-    daysTag.innerHTML = liTag;
-
-
-    daysTag.querySelectorAll("li").forEach((liElement, index) => {
-        const id = liElement.id;
-        liElement.addEventListener("click", () => {
-
-            if (liElement.classList.contains("inactive") || index % 7 == 0) {
-                return;
-            }
-
-            if (liElement.classList.contains("selected")) {
-                liElement.classList.remove("selected");
-            } else {
-                liElement.classList.add("selected");
-                textDateSelected = `${id} de ${months[currMonth]} de ${currYear}`;
-                scheduleContainer.classList.remove("none");
-                calendar.classList.add("none");
-                btnBack.classList.remove("none");
-                btnTransparent.classList.add("none");
-            }
-        });
+  function changeBtn(clickedButton, allButtons, dayElement) {
+    allButtons.forEach(function (button) {
+      const iconElement = button.querySelector('i');
+      if (button === clickedButton) {
+        iconElement.classList.add('fa-circle-dot');
+        iconElement.classList.remove('fa-circle');
+        dayElement.classList.add('day-selected');
+      } else {
+        iconElement.classList.remove('fa-circle-dot');
+        iconElement.classList.add('fa-circle');
+        const dayClosest = button.closest('.day');
+        dayClosest.classList.remove('day-selected');
+      }
     });
-}
-renderCalendar();
+  }
 
-prevNextIcon.forEach(icon => {
-    icon.addEventListener("click", () => {
-        currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
+  const today = new Date();
+  const calendarElement = document.getElementById('accordionExample');
+  const allButtons = [];
 
-        if (currMonth < 0 || currMonth > 11) {
-            date = new Date(currYear, currMonth, new Date().getDate());
-            currYear = date.getFullYear();
-            currMonth = date.getMonth();
-        } else {
-            date = new Date();
-        }
-        renderCalendar();
+  for (let i = 0; i < 10; i++) {
+    const currentDate = new Date(today);
+    currentDate.setDate(today.getDate() + i);
+
+    const dayElement = document.createElement('div');
+    dayElement.classList.add('day');
+    dayElement.innerHTML = `
+      <button class="btn btn-link btn-days" type="button" data-toggle="collapse" data-target="#collapse${i + 1}" aria-expanded="false" aria-controls="collapse${i + 1}">
+        <i class="fa-regular fa-circle"></i> &nbsp; ${getDayOfWeek(currentDate)} - ${currentDate.toLocaleDateString()}
+      </button>
+      <div id="collapse${i + 1}" class="collapse" data-parent="#accordionExample">
+        <ul class="options">
+          ${generateOptions(currentDate)}
+        </ul>
+      </div>
+    `;
+
+    const buttonElement = dayElement.querySelector('.btn-days');
+    buttonElement.addEventListener('click', function () {
+      changeBtn(buttonElement, allButtons, dayElement);
     });
-});
 
-const callSchedule = (hours) => {
-    const scheduleButton = document.getElementById("schedule-button");
-    const scheduleResult = document.getElementById("schedule-result");
+    allButtons.push(buttonElement);
 
-    scheduleButton.addEventListener("click", function () {
-    const selectedHour = hours;
+    // Adiciona um evento de clique para cada opção de hora
+    const options = dayElement.querySelectorAll('.option-text');
+    options.forEach(function (option) {
+      option.addEventListener('click', function () {
+        const dateFull = currentDate.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' })
+        const dateToday = getDayOfWeek(currentDate);
+        const textDateFull = dateFull + ` (${dateToday})`;
+        const hours = option.textContent;
 
-    if (selectedHour) {
-        scheduleResult.textContent = `Você agendou o dia ${textDateSelected} as ${selectedHour} horas.`;
-        setTimeout(() => {
-            var texto = `Olá! Eu gostaria de fazer uma reserva para o dia ${textDateSelected} as ${selectedHour} horas.`;
+        $("#modal_overlay_reserva").removeClass('hidden');
+        $("#confirmar_reserva").removeClass('hidden');
+        $("#reserva_date").text(textDateFull);
+        $("#reserva_hour").text(hours);
 
-            var encode = encodeURI(texto);
-            let URL = `https://wa.me/${CELULAR_EMPRESA}?text=${encode}`;
+        callSchedule(hours, textDateFull);
+      });
+    });
 
-            window.open(URL, '_blank');
-        }, 3000);
-    } else {
-        scheduleResult.textContent = "Por favor, selecione um horário válido.";
+    calendarElement.append(dayElement);
+  }
+
+  function generateOptions(currentDate) {
+    const options = [];
+    const currentTime = new Date();
+
+    const availableTimes = ['12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '19:00', '20:00', '20:30', '21:00', '21:30', '22:00'];
+
+    for (let j = 0; j < availableTimes.length; j++) {
+      const optionTime = new Date(currentDate);
+      const [hours, minutes] = availableTimes[j].split(':');
+      optionTime.setHours(parseInt(hours, 10), parseInt(minutes, 10), 0);
+
+      const optionElement = document.createElement('li');
+      optionElement.classList.add('option');
+      const optionTextElement = document.createElement('span');
+      optionTextElement.classList.add('option-text');
+
+      if (optionTime > currentTime) {
+        optionTextElement.textContent = availableTimes[j];
+      } else {
+        optionTextElement.textContent = `${availableTimes[j]}`;
+        optionTextElement.style.pointerEvents = 'none';
+        optionTextElement.style.backgroundColor = '#90908e';
+        optionTextElement.style.border = '1px solid #90908e';
+      }
+
+      optionElement.appendChild(optionTextElement);
+      options.push(optionElement);
     }
+
+    return options.map(option => option.outerHTML).join('');
+  }
+  const callSchedule = (hours, date) => {
+    const btnAgendarReserva = document.getElementById("agendar_reserva");
+
+    btnAgendarReserva.addEventListener("click", function () {
+      setTimeout(() => {
+        var texto = `Olá! Eu gostaria de fazer uma reserva para o dia ${date} ás ${hours} horas.`;
+
+        var encode = encodeURI(texto);
+        let URL = `https://wa.me/${CELULAR_EMPRESA}?text=${encode}`;
+
+        window.open(URL, '_blank');
+      }, 500);
+    });
+  }
 });
-}
-
-
-
-selectBtn.addEventListener("click", () => optionMenu.classList.toggle("active"));
-
-options.forEach(option => {
-    option.addEventListener("click", () => {
-        let selectdOption = option.querySelector(".option-text").innerHTML;
-        sBtnText.innerHTML = selectdOption;
-
-        callSchedule(selectdOption);
-
-        optionMenu.classList.remove("active");
-    })
-})
-
