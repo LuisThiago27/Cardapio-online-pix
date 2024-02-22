@@ -178,6 +178,7 @@ cardapio.metodos = {
     
                 cardapio.metodos.mensagem('Item adicionado ao carrinho', 'green');
                 $("#modalItem").addClass('hidden');
+                $("body").removeClass('no-cell-overflow');
     
                 cardapio.metodos.atualizaBadgeTotal();
             }
@@ -258,7 +259,16 @@ cardapio.metodos = {
 
             $("#modalItem").addClass('hidden');
             $("body").removeClass('no-cell-overflow');
-            cardapio.metodos.mensagem('O item não foi alterado');
+        }
+    },
+
+    fecharModalEditarItem: (abrir) => {
+        if (!abrir) {
+            ITENS_ACOMP = [];
+
+            $("#modalItem").addClass('hidden');
+            $("body").addClass('no-cell-overflow');
+            cardapio.metodos.mensagem('O item não foi alterado!');
         }
     },
 
@@ -277,6 +287,7 @@ cardapio.metodos = {
             .replace(/\${preco}/g, itens.price.toFixed(2).replace('.', ','))
             .replace(/\${id}/g, itens.id)
             .replace(/\${imagem}/g, itens.img)
+            .replace(/\${Item}/g, 'Item')
 
         $("#descItensCarrinho").append(temp);
 
@@ -376,6 +387,7 @@ cardapio.metodos = {
             .replace(/\${preco}/g, itens.price.toFixed(2).replace('.', ','))
             .replace(/\${id}/g, itens.id)
             .replace(/\${imagem}/g, itens.img)
+            .replace(/\${Item}/g, 'EditarItem')
 
         $("#descItensCarrinho").append(temp);
 
@@ -1414,7 +1426,7 @@ cardapio.templates = {
     descItem: `
         <div class="col-12 header-desc-item no-desk">
             <a id="btnFecharCarrinho" class="btn-fechar-desc-cell"
-                onclick="cardapio.metodos.fecharModalItem(false);">
+                onclick="cardapio.metodos.fecharModal\${Item}(false);">
                 <i class="fa-solid fa-chevron-left"></i>
             </a>
             <span>\${nome}</span>
@@ -1422,7 +1434,7 @@ cardapio.templates = {
         <div class="col-12 col-lg-4 col-md-4 col-img-produto-desc">
             <div class="no-mobile">
                 <a id="btnFecharCarrinho" class="btn btn-white btn-sm float-right btn-fechar-desc-cell"
-                    onclick="cardapio.metodos.fecharModalItem(false);">
+                    onclick="cardapio.metodos.fecharModal\${Item}(false);">
                     Fechar
                 </a>
             </div>
