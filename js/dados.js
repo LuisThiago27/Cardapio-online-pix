@@ -453,90 +453,90 @@ var MENU = {
             "price": 79
         }
     ],
-    "steaks": [
+    "acai": [
         {
-            "id": "california-reserve-filet-mignon-steaks-gift-box",
-            "img": "./img/cardapio/steaks/california-reserve-filet-mignon-steaks-gift-box.bf226e317aad85f47897ae7e325f790d.jpg",
-            "name": "Flannery Beef",
-            "dsc": "California Reserve Filet Mignon Steaks Gift Box",
-            "price": 129
+            "id": "acai-artesanal",
+            "img": "./img/cardapio/acai/acai-artesanal.jpg",
+            "name": "Açaí Artesanal",
+            "dsc": "Açaí 100% natural e artesanal, preparado com ingredientes frescos e selecionados. Uma opção perfeita para os amantes do verdadeiro sabor do açaí.",
+            "price": 15
         },
         {
-            "id": "steaks-and-cakes-date-night-dinner-for-2",
-            "img": "./img/cardapio/steaks/valentines-steaks-and-cakes-dinner-for-2.0c63dab635eed46209455dc33cd25ea8.jpg",
-            "name": "Chesapeake Bay Gourmet",
-            "dsc": "Steaks and Cakes Date Night Dinner for 2",
-            "price": 129
+            "id": "acai-banana-com-morango",
+            "img": "./img/cardapio/acai/acai-banana-com-morango.jpg",
+            "name": "Açaí Banana com Morango",
+            "dsc": "Açaí cremoso com banana fatiada e morangos frescos, uma combinação clássica e deliciosa que agrada a todos os paladares.",
+            "price": 16
         },
         {
-            "id": "Prime-holiday-steak-sampler-for-10-12",
-            "img": "./img/cardapio/steaks/holiday-sampler-9-pack.2de75ca80282ffe9d064eb757ff7a5a1.jpg",
-            "name": "Saltbrick Prime",
-            "dsc": "Chef Matt's Steak Sampler for 10-12",
-            "price": 179
+            "id": "acai-com-banana",
+            "img": "./img/cardapio/acai/acai-com-banana.jpg",
+            "name": "Açaí com Banana e Leite Condensado",
+            "dsc": "Uma explosão de sabores em um copo de 400 ml, com camadas de açaí cremoso com xarope de Guaraná, acompanhado de banana fatiada, generosa cobertura de leite condensado, e dois complementos à escolha. A montagem é cuidadosamente preparada para uma experiência gastronômica irresistível.",
+            "price": 15
         },
         {
-            "id": "bone-in-rib-steak",
-            "img": "./img/cardapio/steaks/bone-in-rib-steak.b13d9d4233035767605f0de9acdce1ab.jpg",
-            "name": "Old Homestead Steakhouse",
-            "dsc": "Bone-in Rib Steak",
-            "price": 159
+            "id": "acai-tradicional",
+            "img": "./img/cardapio/acai/acai-tradicional.jpg",
+            "name": "Açaí Tradicional",
+            "dsc": "Copo de 400 ml preparado com camadas de açaí cremoso com xarope de Guaraná, acompanhado de banana picada e dois complementos à escolha. A montagem das camadas é padronizada, não sendo possível enviar os complementos selecionados separadamente (complementos extras serão enviados separados).",
+            "price": 12
         },
         {
-            "id": "american-wagyu-gold-grade-top-sirloins",
-            "img": "./img/cardapio/steaks/american-wagyu-gold-grade-sirloins.040dbeb8f8e615b91fa7e513e3dc089c.jpg",
-            "name": "Snake River Farms",
-            "dsc": "American Wagyu Gold Grade Top Sirloins",
-            "price": 119
+            "id": "acai-com-kiwi",
+            "img": "./img/cardapio/acai/acai-com-kiwi.jpg",
+            "name": "Açaí com Kiwi",
+            "dsc": "Açaí cremoso acompanhado de kiwi fresco picado, uma opção refrescante e cheia de vitaminas para energizar o seu dia.",
+            "price": 17
         },
         {
-            "id": "2-peter-luger-steak-pack-b",
-            "img": "./img/cardapio/steaks/peter-luger-steak-pack-b.9feb0300e6be2dfecfa314f2006a2183.jpg",
-            "name": "Peter Luger Steak House",
-            "dsc": "Peter Luger Porterhouse Steaks",
-            "price": 215.95
+            "id": "acai-com-mm",
+            "img": "./img/cardapio/acai/acai-com-mm.jpg",
+            "name": "Açaí com M&M's",
+            "dsc": "Açaí cremoso com cobertura de M&M's, uma opção indulgente e divertida para os amantes de chocolate.",
+            "price": 18
         },
         {
-            "id": "ribeye-prime-steak-gift-box",
-            "img": "./img/cardapio/steaks/ribeye-prime-steak-gift-box.e74cb016baabbb2df73861de8150f29c.jpg",
-            "name": "Churchill's Steakhouse",
-            "dsc": "Ribeye Prime Steak Gift Box",
-            "price": 229
+            "id": "acai-puro",
+            "img": "./img/cardapio/acai/acai-puro.jpg",
+            "name": "Açaí 700ml",
+            "dsc": "Açaí tradicional, sem adição de complementos. A base perfeita para quem prefere sentir o sabor autêntico e natural do açaí.",
+            "price": 15
         },
         {
-            "id": "dry-aged-usda-prime-black-angus-porterhouse-steak-2-pack",
-            "img": "./img/cardapio/steaks/usda-prime-black-angus-filet-mignon-barrel-cut.6ee213799e7d1848763d12edca18e3b1.jpg",
-            "name": "Pat LaFrieda Meats",
-            "dsc": "Dry-Aged USDA Prime Black Angus Porterhouse Steak - 2 Pack",
-            "price": 96.7
+            "id": "acai-com-morango",
+            "img": "./img/cardapio/acai/acai-com-morango.jpg",
+            "name": "Açaí com Morango",
+            "dsc": "Delicioso copo de 400 ml com camadas de açaí cremoso misturado com xarope de Guaraná, combinado com morangos frescos fatiados, e dois complementos à escolha. A montagem das camadas segue um padrão, garantindo uma experiência única a cada colherada.",
+            "price": 14
         },
         {
-            "id": "california-reserve-ribeye-steak",
-            "img": "./img/cardapio/steaks/california-reserve-ribeye-steak-12-oz.d367c5ae72dd9f89e170662104bef4fc.jpg",
-            "name": "Flannery Beef",
-            "dsc": "California Reserve Ribeye Steak - 12 oz",
-            "price": 32
+            "id": "acai-zero-com-morango",
+            "img": "./img/cardapio/acai/acai-zero-com-morango.jpg",
+            "name": "Açaí Zero com Morango",
+            "dsc": "Açaí sem adição de açúcar, acompanhado de morangos frescos. Uma opção saudável e saborosa para quem busca equilíbrio na alimentação.",
+            "price": 14
         },
         {
-            "id": "dry-aged-boneless-ribeye-steak-dinner-kit-for-4",
-            "img": "./img/cardapio/steaks/dry-aged-boneless-ribeye-steak-dinner-for-4.81c3bdc05fe6bdb2c2214709863120e0.jpg",
-            "name": "Chef Francis Mallmann",
-            "dsc": "Dry-Aged Boneless Ribeye Steak Dinner Kit for 4",
-            "price": 225
+            "id": "acai-1litro",
+            "img": "./img/cardapio/acai/acai-1litro.jpg",
+            "name": "Açaí 1 Litro",
+            "dsc": "Litro de açaí cremoso para compartilhar com os amigos ou desfrutar ao longo do dia. Acompanha dois complementos à escolha.",
+            "price": 25
         },
         {
-            "id": "california-reserve-filet-mignon-steak",
-            "img": "./img/cardapio/steaks/california-reserve-filet-mignon-steak.ff15071964ec8141d30c2ba05fb117e0.jpg",
-            "name": "Flannery Beef",
-            "dsc": "California Reserve Filet Mignon Steak",
+            "id": "tigela-de-acai-com-creme",
+            "img": "./img/cardapio/acai/tigela-de-acai-com-creme.jpg",
+            "name": "Tigela de Açaí com Creme",
+            "dsc": "Tigela de açaí cremoso servido com uma generosa porção de creme de leite fresco. Uma opção suave e aveludada para os amantes de cremosidade.",
+            "price": 20
+        },
+        {
+            "id": "tigela-de-acai-com-morango",
+            "img": "./img/cardapio/acai/tigela-de-acai-com-morango.jpg",
+            "name": "Tigela de Açaí com frutas",
+            "dsc": "Tigela de açaí cremoso acompanhado de uma variedade de frutas frescas, como morangos, bananas, kiwis e outras frutas da estação. Uma explosão de cores, sabores e nutrientes em cada colherada.",
             "price": 22
-        },
-        {
-            "id": "mesquite-smoked-peppered-beef-tenderloin",
-            "img": "./img/cardapio/steaks/mesquite-smoked-peppered-beef-tenderloin.5c314418a1f75c7057eed686e2fad46f.jpg",
-            "name": "Perini Ranch Steakhouse",
-            "dsc": "Mesquite Smoked Peppered Beef Tenderloin",
-            "price": 165
         }
     ]
 }
@@ -665,17 +665,17 @@ var ACOMP = {
             "price": 79
         }
     ],
-    "steaks": [
+    "acai": [
         {
             "id": "california-reserve-filet-mignon-steak",
-            "img": "./img/cardapio/steaks/california-reserve-filet-mignon-steak.ff15071964ec8141d30c2ba05fb117e0.jpg",
+            "img": "./img/cardapio/acai/california-reserve-filet-mignon-steak.ff15071964ec8141d30c2ba05fb117e0.jpg",
             "name": "Flannery Beef",
             "dsc": "California Reserve Filet Mignon Steak",
             "price": 22
         },
         {
             "id": "mesquite-smoked-peppered-beef-tenderloin",
-            "img": "./img/cardapio/steaks/mesquite-smoked-peppered-beef-tenderloin.5c314418a1f75c7057eed686e2fad46f.jpg",
+            "img": "./img/cardapio/acai/mesquite-smoked-peppered-beef-tenderloin.5c314418a1f75c7057eed686e2fad46f.jpg",
             "name": "Perini Ranch Steakhouse",
             "dsc": "Mesquite Smoked Peppered Beef Tenderloin",
             "price": 165

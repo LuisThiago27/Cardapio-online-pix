@@ -254,8 +254,11 @@ cardapio.metodos = {
 
     fecharModalItem: (abrir) => {
         if (!abrir) {
+            ITENS_ACOMP = [];
+
             $("#modalItem").addClass('hidden');
             $("body").removeClass('no-cell-overflow');
+            cardapio.metodos.mensagem('O item não foi alterado');
         }
     },
 
@@ -314,13 +317,12 @@ cardapio.metodos = {
         ITENS = [];
         var categoria = $(".container-menu a.active").attr('id').split('menu-')[1];
 
-        //obtem a lista de itens
-        let filtro = MENU[categoria];
-
         //obtem o item
-        let item = $.grep(filtro, (e, i) => { return e.id == id });
+        let item = $.grep(MEU_CARRINHO, (e, i) => { return e.id == id });
 
         let itensAcomp = ACOMP[categoria];
+        console.log(id)
+        console.log(item)
 
         var dataItens = {
             id: item[0].id,
@@ -369,7 +371,6 @@ cardapio.metodos = {
         $("#addCart").addClass('hidden');
         $("#editCart").removeClass('hidden');
 
-
         let temp = cardapio.templates.descItem.replace(/\${desc}/g, itens.dsc)
             .replace(/\${nome}/g, itens.name)
             .replace(/\${preco}/g, itens.price.toFixed(2).replace('.', ','))
@@ -387,21 +388,21 @@ cardapio.metodos = {
         $("#containerFooterDesc").append(tempBtnAdicionarItem);
         cardapio.metodos.somarTotalItemDescEdit(itens.id);
 
-        // Verifica se há acompanhamentos
         if (item.acomp.length > 0) {
+            itensAcomp.forEach((itens) => {
+                cardapio.metodos.addTemp(itens);
+            });
+            // Atualiza os valores dos acompanhamentos
             item.acomp.forEach((e) => {
-                itensAcomp.forEach((itens) => {
-                    cardapio.metodos.addTemp(itens);
-                });
                 $("#qntd-acomp-" + e.id).text(e.qntd);
                 cardapio.metodos.somarTotalAcompDescEdit(e.id);
             });
         } else {
+            // Adiciona o template apenas uma vez quando não há acompanhamentos
             itensAcomp.forEach((itens) => {
                 cardapio.metodos.addTemp(itens);
             });
         }
-
     },
 
     somarTotalItemDescEdit: (id) => {
@@ -481,7 +482,7 @@ cardapio.metodos = {
 
     //diminuir a quantidade do item do cardapio
     diminuirQuantidadeDesc: (id) => {
-valorAtual
+        
         let qntdAtual = parseInt($("#qntd-desc-" + id).text());
 
         if (qntdAtual > 1) {

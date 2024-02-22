@@ -534,6 +534,10 @@
         left: unset;
     }
 
+    .card-item .img-produto img {
+        height: 80px !important;
+    }
+
 }
 
 /* Desktop e Tablets (col-md) 768px a 1024px  */
@@ -614,5 +618,9 @@
     .col-qrcode {
         width: 100%;
         margin-bottom: 20px;
+    }
+
+    .card-item .img-produto img {
+        height: 170px;
     }
 }
