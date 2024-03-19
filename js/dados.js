@@ -459,84 +459,96 @@ var MENU = {
             "img": "./img/cardapio/acai/acai-artesanal.jpg",
             "name": "Açaí Artesanal",
             "dsc": "Açaí 100% natural e artesanal, preparado com ingredientes frescos e selecionados. Uma opção perfeita para os amantes do verdadeiro sabor do açaí.",
-            "price": 15
+            "price": 15,
+            "acomp": []
         },
         {
             "id": "acai-banana-com-morango",
             "img": "./img/cardapio/acai/acai-banana-com-morango.jpg",
             "name": "Açaí Banana com Morango",
             "dsc": "Açaí cremoso com banana fatiada e morangos frescos, uma combinação clássica e deliciosa que agrada a todos os paladares.",
-            "price": 16
+            "price": 16,
+            "acomp": []
         },
         {
             "id": "acai-com-banana",
             "img": "./img/cardapio/acai/acai-com-banana.jpg",
             "name": "Açaí com Banana e Leite Condensado",
             "dsc": "Uma explosão de sabores em um copo de 400 ml, com camadas de açaí cremoso com xarope de Guaraná, acompanhado de banana fatiada, generosa cobertura de leite condensado, e dois complementos à escolha. A montagem é cuidadosamente preparada para uma experiência gastronômica irresistível.",
-            "price": 15
+            "price": 15,
+            "acomp": []
         },
         {
             "id": "acai-tradicional",
             "img": "./img/cardapio/acai/acai-tradicional.jpg",
             "name": "Açaí Tradicional",
             "dsc": "Copo de 400 ml preparado com camadas de açaí cremoso com xarope de Guaraná, acompanhado de banana picada e dois complementos à escolha. A montagem das camadas é padronizada, não sendo possível enviar os complementos selecionados separadamente (complementos extras serão enviados separados).",
-            "price": 12
+            "price": 12,
+            "acomp": []
         },
         {
             "id": "acai-com-kiwi",
             "img": "./img/cardapio/acai/acai-com-kiwi.jpg",
             "name": "Açaí com Kiwi",
             "dsc": "Açaí cremoso acompanhado de kiwi fresco picado, uma opção refrescante e cheia de vitaminas para energizar o seu dia.",
-            "price": 17
+            "price": 17,
+            "acomp": []
         },
         {
             "id": "acai-com-mm",
             "img": "./img/cardapio/acai/acai-com-mm.jpg",
             "name": "Açaí com M&M's",
             "dsc": "Açaí cremoso com cobertura de M&M's, uma opção indulgente e divertida para os amantes de chocolate.",
-            "price": 18
+            "price": 18,
+            "acomp": []
         },
         {
             "id": "acai-puro",
             "img": "./img/cardapio/acai/acai-puro.jpg",
             "name": "Açaí 700ml",
             "dsc": "Açaí tradicional, sem adição de complementos. A base perfeita para quem prefere sentir o sabor autêntico e natural do açaí.",
-            "price": 15
+            "price": 15,
+            "acomp": []
         },
         {
             "id": "acai-com-morango",
             "img": "./img/cardapio/acai/acai-com-morango.jpg",
             "name": "Açaí com Morango",
             "dsc": "Delicioso copo de 400 ml com camadas de açaí cremoso misturado com xarope de Guaraná, combinado com morangos frescos fatiados, e dois complementos à escolha. A montagem das camadas segue um padrão, garantindo uma experiência única a cada colherada.",
-            "price": 14
+            "price": 14,
+            "acomp": []
         },
         {
             "id": "acai-zero-com-morango",
             "img": "./img/cardapio/acai/acai-zero-com-morango.jpg",
             "name": "Açaí Zero com Morango",
             "dsc": "Açaí sem adição de açúcar, acompanhado de morangos frescos. Uma opção saudável e saborosa para quem busca equilíbrio na alimentação.",
-            "price": 14
+            "price": 14,
+            "acomp": []
         },
         {
             "id": "acai-1litro",
             "img": "./img/cardapio/acai/acai-1litro.jpg",
             "name": "Açaí 1 Litro",
             "dsc": "Litro de açaí cremoso para compartilhar com os amigos ou desfrutar ao longo do dia. Acompanha dois complementos à escolha.",
-            "price": 25
+            "price": 25,
+            "acomp": []
         },
         {
             "id": "tigela-de-acai-com-creme",
             "img": "./img/cardapio/acai/tigela-de-acai-com-creme.jpg",
             "name": "Tigela de Açaí com Creme",
             "dsc": "Tigela de açaí cremoso servido com uma generosa porção de creme de leite fresco. Uma opção suave e aveludada para os amantes de cremosidade.",
-            "price": 20
+            "price": 20,
+            "acomp": []
         },
         {
             "id": "tigela-de-acai-com-morango",
             "img": "./img/cardapio/acai/tigela-de-acai-com-morango.jpg",
             "name": "Tigela de Açaí com frutas",
             "dsc": "Tigela de açaí cremoso acompanhado de uma variedade de frutas frescas, como morangos, bananas, kiwis e outras frutas da estação. Uma explosão de cores, sabores e nutrientes em cada colherada.",
-            "price": 22
+            "price": 22,
+            "acomp": []
         }
     ]
 }
@@ -667,18 +679,16 @@ var ACOMP = {
     ],
     "acai": [
         {
-            "id": "california-reserve-filet-mignon-steak",
-            "img": "./img/cardapio/acai/california-reserve-filet-mignon-steak.ff15071964ec8141d30c2ba05fb117e0.jpg",
-            "name": "Flannery Beef",
-            "dsc": "California Reserve Filet Mignon Steak",
-            "price": 22
+            "id": "colher-e-guardanapo",
+            "img": "./img/cardapio/acai/acompanhamentos/colher-e-guardanapo.jpg",
+            "name": "Colher E Guardanapo",
+            "price": 0.5
         },
         {
-            "id": "mesquite-smoked-peppered-beef-tenderloin",
-            "img": "./img/cardapio/acai/mesquite-smoked-peppered-beef-tenderloin.5c314418a1f75c7057eed686e2fad46f.jpg",
-            "name": "Perini Ranch Steakhouse",
-            "dsc": "Mesquite Smoked Peppered Beef Tenderloin",
-            "price": 165
+            "id": "pacoca",
+            "img": "./img/cardapio/acai/acompanhamentos/pacoca.jpg",
+            "name": "Paçoca",
+            "price": 1.00
         }
     ]
 }
