@@ -330,8 +330,6 @@ cardapio.metodos = {
         let item = $.grep(MEU_CARRINHO, (e, i) => { return e.id == id });
 
         let itensAcomp = ACOMP[categoria];
-        console.log(id)
-        console.log(item)
 
         var dataItens = {
             id: item[0].id,
@@ -809,7 +807,7 @@ cardapio.metodos = {
             $('#valor_total').val(total.replace('.', ''));
             console.log(MEU_CARRINHO);
         } else {
-            $("#itensCarrinho").html('<p class="carrinho-vazio animated fadeIn"><i class="fa fa-shopping-bag animated flip"></i>Seu carrinho está vazio.</p>');
+            $("#itensCarrinho").html('<p class="carrinho-vazio animated fadeIn"><i class="fa-solid fa-cart-shopping animated flip"></i></i>Seu carrinho está vazio.</p>');
             cardapio.metodos.carregarValores();
         }
 

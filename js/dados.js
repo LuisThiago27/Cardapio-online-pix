@@ -1,93 +1,117 @@
 var MENU = {
-    "churrasco": [
+    "pratos": [
         {
-            "id": "ribs-brisket-and-burnt-ends",
-            "img": "./img/cardapio/churrasco/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg",
-            "name": "Joe's KC BBQ",
-            "dsc": "Joe's KC Ribs, Brisket & Burnt Ends",
-            "price": 110.99
+            "id": "feijoada",
+            "img": "./img/cardapio/pratos/feijoada.jpg",
+            "name": "Feijoada",
+            "dsc": "Prato típico brasileiro composto por feijão preto cozido com diversas carnes (como carne seca, linguiça, costela, entre outras), acompanhado de arroz, couve, farofa, laranja e torresmo.",
+            "price": 45,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "005-kings-carolina-oink-sampler",
-            "img": "./img/cardapio/churrasco/carolina-bbq-oink-sampler.1340b5a10cedc238cb2280306dd1d5a5.jpg",
-            "name": "Kings BBQ",
-            "dsc": "Carolina BBQ Oink Sampler",
-            "price": 89
+            "id": "carne-de-sol-com-mandioca",
+            "img": "./img/cardapio/pratos/carolina-bbq-oink-sampler.1340b5a10cedc238cb2280306dd1d5a5.jpg",
+            "name": "Carne de Sol com Mandioca",
+            "dsc": "Prato típico do nordeste brasileiro feito com carne de sol (carne bovina salgada e seca ao sol), mandioca cozida, manteiga de garrafa e queijo coalho",
+            "price": 55,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "texas-monthlys-1-bbq-brisket",
-            "img": "./img/cardapio/churrasco/texas-monthlys-1-bbq-brisket.1006a061be7acae03992e420fbca995a.jpg",
-            "name": "Snow's BBQ",
-            "dsc": "Texas Monthly's #1 BBQ Brisket",
-            "price": 199
+            "id": "picanha",
+            "img": "./img/cardapio/pratos/texas-monthlys-1-bbq-brisket.1006a061be7acae03992e420fbca995a.jpg",
+            "name": "Picanha na Chapa",
+            "dsc": "Picanha grelhada na chapa, servida com arroz, feijão tropeiro, farofa e vinagrete.",
+            "price": 70,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "whole-brisket-texas-bbq-sauce",
-            "img": "./img/cardapio/churrasco/whole-brisket-texas-barbecue-bbq-sauce.e07ee4818b20ed43d217bf67fedd41ce.jpg",
-            "name": "Franklin Barbecue",
-            "dsc": "Whole Brisket + Texas Barbecue BBQ Sauce",
-            "price": 249
+            "id": "virado-paulista",
+            "img": "./img/cardapio/pratos/virada-paulista.jpg",
+            "name": "Virado à Paulista",
+            "dsc": "Prato típico de São Paulo feito com arroz, feijão, bisteca de porco, ovo frito, banana empanada, couve refogada e torresmo.",
+            "price": 40,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "whole-texas-smoked-brisket",
-            "img": "./img/cardapio/churrasco/whole-texas-smoked-brisket.a5558a25381e271408e197936e7985d8.jpg",
-            "name": "Terry Black's Barbecue",
-            "dsc": "Whole Texas Smoked Brisket",
-            "price": 189
+            "id": "escondidinho-carne-seca",
+            "img": "./img/cardapio/pratos/escondidinho-carne-seca.jpg",
+            "name": "Escondidinho de Carne Seca",
+            "dsc": "Camadas de purê de mandioca, carne seca desfiada e refogada, cobertas com queijo coalho gratinado, acompanhado de arroz branco.",
+            "price": 49.99,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "mini-trinity-bbq-combo-brisket-ribs-and-links",
-            "img": "./img/cardapio/churrasco/mini-trinity-bbq-combo-brisket-ribs-and-links.245582f593bf64b23b57dfca2be18cfd.jpg",
-            "name": "Bludso's BBQ",
-            "dsc": "Mini Trinity BBQ Combo - Brisket, Ribs & Links",
-            "price": 139
+            "id": "churrasco-misto",
+            "img": "./img/cardapio/pratos/mini-trinity-bbq-combo-brisket-ribs-and-links.245582f593bf64b23b57dfca2be18cfd.jpg",
+            "name": "Churrasco Misto",
+            "dsc": "Seleção de carnes grelhadas na brasa, incluindo picanha, carne de porco, frango e linguiça, acompanhadas de farofa, vinagrete, arroz branco e mandioca cozida.",
+            "price": 45,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "235203-blue-smoke-baby-back-ribs-backyard-barbecue-chicken-combo",
-            "img": "./img/cardapio/churrasco/blue-smoke-baby-back-ribs-backyard-barbecue-chicken-combo.a95a3e632ae324f719738a2a5c1dff6e.jpg",
-            "name": "Blue Smoke",
-            "dsc": "Blue Smoke Baby Back Ribs + Backyard Barbecue Chicken Combo",
-            "price": 129
+            "id": "carne-ao-molho-com-mandioca",
+            "img": "./img/cardapio/pratos/carne-ao-molho-com-mandioca.jpg",
+            "name": "Carne ao Molho com Mandioca",
+            "dsc": "Carne cozida lentamente em um molho saboroso, servida com mandioca cozida, arroz branco, feijão e salada.",
+            "price": 30,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "006-kings-meat-lovers-special",
-            "img": "./img/cardapio/churrasco/bbq-meat-lovers-special-for-10.36ca670fda4bfa783c2ea9165e068d26.jpg",
-            "name": "Kings BBQ",
-            "dsc": "BBQ Meat Lovers Special for 10",
-            "price": 139
+            "id": "acaraje",
+            "img": "./img/cardapio/pratos/acaraje.jpg",
+            "name": "Acarajé",
+            "dsc": "Bolinho frito feito de massa de feijão fradinho e cebola, recheado com vatapá, camarão refogado e pimenta, típico da culinária baiana.",
+            "price": 35,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "the-big-ugly-bbq-dinner-for-6",
-            "img": "./img/cardapio/churrasco/the-big-ugly-bbq-dinner-for-6.2dfae7818811adddce85cc1a910881a0.jpg",
-            "name": "Ugly Drum",
-            "dsc": "The Big Ugly BBQ Dinner for 6",
-            "price": 229
+            "id": "frango-grelhado",
+            "img": "./img/cardapio/pratos/frango-grelhado.jpg",
+            "name": "Frango grelhado",
+            "dsc": "Peito de frango grelhado e temperado, servido com molho, acompanhado de arroz branco, feijão e salada.",
+            "price": 25,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "17796-mighty-quinns-bbq-sampler-pack",
-            "img": "./img/cardapio/churrasco/mighty-quinns-bbq-sampler-pack.1bfe4a0665edc565756f5241bf25840e.jpg",
-            "name": "Mighty Quinn's BBQ",
-            "dsc": "Mighty Quinn's BBQ Sampler Pack",
-            "price": 169
+            "id": "bobo-de-frango",
+            "img": "./img/cardapio/pratos/bobo-de-frango.jpg",
+            "name": "Bobó de Frango",
+            "dsc": "Prato da culinária baiana feito com frango cozido em um creme de mandioca, leite de coco, azeite de dendê, pimentões, tomates, cebola e temperos, acompanhado de arroz branco.",
+            "price": 50,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "post-oak-smoked-half-brisket",
-            "img": "./img/cardapio/churrasco/post-oak-smoked-usda-prime-half-brisket.6f17178dde7d806670bcc73ff11762b3.jpg",
-            "name": "Southside Market & Barbeque",
-            "dsc": "Post Oak Smoked USDA Prime Half Brisket",
-            "price": 109
+            "id": "peixe-grelhado",
+            "img": "./img/cardapio/pratos/peixe-grelhado.jpg",
+            "name": "Peixe Grelhado",
+            "dsc": "Filé de peixe grelhado e temperado, servido com molho de ervas, acompanhado de arroz branco, purê de batatas, legumes cozidos e salada.",
+            "price": 28,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "best-of-texas-bbq-combo-serves-14",
-            "img": "./img/cardapio/churrasco/best-of-texas-bbq-combo-serves-14.7ae90266335e539c67e77fed14b43029.jpg",
-            "name": "Snow's BBQ",
-            "dsc": "Best of Texas BBQ Combo - Serves 14",
-            "price": 269
+            "id": "galinhada",
+            "img": "./img/cardapio/pratos/galinhada.jpg",
+            "name": "Galinhada",
+            "dsc": "Prato feito com arroz cozido com pedaços de frango, temperos, pimentões, tomates e cheiro-verde.",
+            "price": 40,
+            "comentario": '',
+            "acomp": []
         }
     ],
     "burgers": [
         {
-            "id": "the-gramercy-tavern-burger-4-pack",
+            "id": "x-bacon",
             "img": "./img/cardapio/burguers/Gramercy-Tavern-Burger-and-Kielbasa-Kit-6.4.21-72ppi-1x1-15.jpg",
             "name": "X-Bacon",
             "dsc": "Pão, hambúrguer, bacon, queijo, alface, tomate e maionese.",
@@ -96,7 +120,7 @@ var MENU = {
             "acomp": []
         },
         {
-            "id": "shake-shack-shackburger-8-pack",
+            "id": "x-salada",
             "img": "./img/cardapio/burguers/shake-shack-shackburger-8-pack.973a5e26836ea86d7e86a327becea2b0.jpg",
             "name": "X-Salada",
             "dsc": "Pão, hambúrguer, queijo, alface, tomate, cebola, maionese e ketchup.",
@@ -105,7 +129,7 @@ var MENU = {
             "acomp": []
         },
         {
-            "id": "gotts-cheeseburger-kit-for-4",
+            "id": "x-tudo",
             "img": "./img/cardapio/burguers/gotts-complete-cheeseburger-kit-for-4.7bdc74104b193427b3fe6eae39e05b5e.jpg",
             "name": "X-Tudo",
             "dsc": "Pão, filé de frango, queijo, alface, tomate, maionese e ketchup.",
@@ -114,7 +138,7 @@ var MENU = {
             "acomp": []
         },
         {
-            "id": "le-big-matt-kit-for-6",
+            "id": "x-frango",
             "img": "./img/cardapio/burguers/le-big-matt-kit-for-6.1ddae6e382bb3218eeb0fd5247de115a.jpg",
             "name": "X-Frango",
             "dsc": "Pão, filé de frango, queijo, alface, tomate, maionese e ketchup.",
@@ -132,7 +156,7 @@ var MENU = {
             "acomp": []
         },
         {
-            "id": "21-usda-prime-burgers-pack-of-18-8oz-each",
+            "id": "x-egg",
             "img": "./img/cardapio/burguers/usda-prime-burgers-pack-of-18-8oz-each.274c67f15aa1c0b210dbf51801706670.jpg",
             "name": "X-Egg",
             "dsc": "Pão, hambúrguer, queijo, ovo, alface, tomate, maionese e ketchup.",
@@ -141,7 +165,7 @@ var MENU = {
             "acomp": []
         },
         {
-            "id": "double-stack-burger-kit-for-4",
+            "id": "x-burger",
             "img": "./img/cardapio/burguers/handf-double-stack-burger-kit-for-4.4ee9f54b1d6087e9996335f07c13e5cd.jpg",
             "name": "X-Burger",
             "dsc": "Pão, hambúrguer, queijo, alface, tomate, maionese e ketchup.",
@@ -150,7 +174,7 @@ var MENU = {
             "acomp": []
         },
         {
-            "id": "goldbelly-burger-bash-pack",
+            "id": "x-coracao",
             "img": "./img/cardapio/burguers/the-burger-bash-package.bd9d12d031865940bbe5faf15f1a62f8.jpg",
             "name": "X-Coração",
             "dsc": "Pão, hambúrguer, coração de frango, queijo, alface, tomate, maionese e ketchup.",
@@ -159,7 +183,7 @@ var MENU = {
             "acomp": []
         },
         {
-            "id": "burger-au-poivre-kit-4-pack",
+            "id": "x-salada-com-bacon",
             "img": "./img/cardapio/burguers/burger-au-poivre-kit-4-pack.3ca0e39b02db753304cd185638dad518.jpg",
             "name": "X-Salada com Bacon",
             "dsc": "Pão, hambúrguer, queijo, bacon, alface, tomate, cebola, maionese e ketchup.",
@@ -186,7 +210,7 @@ var MENU = {
             "acomp": []
         },
         {
-            "id": "gramercy-tavern-burger-kielbasa-combo",
+            "id": "x-calabresa",
             "img": "./img/cardapio/burguers/Gramercy-Tavern-Burger-and-Kielbasa-Kit-6.4.21-72ppi-1x1-47.jpg",
             "name": "X-Calabresa",
             "dsc": "Pão, hambúrguer, queijo, calabresa, alface, tomate, maionese e ketchup.",
@@ -197,88 +221,112 @@ var MENU = {
     ],
     "sobremesas": [
         {
-            "id": "15259-german-chocolate-killer-brownie-tin-pack",
+            "id": "brownie-de-chocolate",
             "img": "./img/cardapio/sobremesas/german-chocolate-killer-brownie-tin-pack.5ebc34160f28767a9d94c4da2e04c4b9.jpg",
-            "name": "Killer Brownie®",
-            "dsc": "German Chocolate Killer Brownie®",
-            "price": 39.99
+            "name": "Brownie de Chocolate",
+            "dsc": "Brownie de chocolate denso e úmido, servido quente com sorvete de creme e calda de chocolate.",
+            "price": 8,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "jacques-world-famous-chocolate-chip-cookies",
+            "id": "cookie-de-chocolate",
             "img": "./img/cardapio/sobremesas/jacques-world-famous-chocolate-chip-cookies-6-pack.2217a14c443602493bba88aa9335319a.jpg",
-            "name": "Jacques Torres Chocolate",
-            "dsc": "Jacques' World Famous Chocolate Chip Cookies - 6 Pack",
-            "price": 39.95
+            "name": "Cookie de Chocolate",
+            "dsc": "Cookie macio e recheado com pedaços de chocolate meio amargo, perfeito para os amantes de chocolate.",
+            "price": 4,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "luigis-original-cannoli-pie",
-            "img": "./img/cardapio/sobremesas/original-cannoli-pie.4cb5b9ba82f57b69b90765fd9f07aa1a.jpg",
-            "name": "The Cannoli Pie Company",
-            "dsc": "Original Cannoli Pie",
-            "price": 69
+            "id": "sorvete-de-chocolate",
+            "img": "./img/cardapio/sobremesas/sorvete-chocolate.jpg",
+            "name": "Sorvete de Chocolate",
+            "dsc": "Sorvete cremoso com sabor intenso de chocolate, feito com cacau de alta qualidade.",
+            "price": 6,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "sea-salted-caramel-swirl-cheesecake",
-            "img": "./img/cardapio/sobremesas/sea-salted-caramel-swirl-cheesecake.e2825335433fb7a272a5d77649a6849e.jpg",
-            "name": "Cotton Blues Cheesecake Company",
-            "dsc": "Sea-Salted Caramel Swirl Cheesecake",
-            "price": 65
+            "id": "pudim-leite-condensado",
+            "img": "./img/cardapio/sobremesas/pudim.jpg",
+            "name": "Pudim de Leite Condensado",
+            "dsc": "Pudim cremoso feito com leite condensado, leite, ovos e açúcar, coberto com calda de caramelo.",
+            "price": 6,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "brooklyn-blackout-cookie-brownie-combo-pack-2-tins",
-            "img": "./img/cardapio/sobremesas/brooklyn-blackout-cookie-brownie-combo-pack-2-tins.d8805325baf6b23b4f01d119dc4531a7.jpg",
-            "name": "Brooklyn Blackout Company",
-            "dsc": "Brooklyn Blackout Cookie + Brownie Combo Pack - 2 Tins",
-            "price": 89
+            "id": "torta-limao",
+            "img": "./img/cardapio/sobremesas/torta-limao.jpg",
+            "name": "Torta Limão",
+            "dsc": "Torta refrescante com recheio de creme de limão e cobertura de merengue, servida em uma base de massa crocante.",
+            "price": 7,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "best-seller-cupcake-dozen",
+            "id": "cupcake-baunilha",
             "img": "./img/cardapio/sobremesas/best-seller-cupcake-dozen.f93b21993f6a2da11c975d45b9b0d08f.jpg",
-            "name": "Crave Cupcakes",
-            "dsc": "Best Seller Cupcake Dozen",
-            "price": 89
+            "name": "Cupcake de Baunilha",
+            "dsc": "Cupcake fofo de baunilha com cobertura de buttercream e confeitos coloridos.",
+            "price": 5,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "choose-your-own-ice-cream-donuts-6-pack",
-            "img": "./img/cardapio/sobremesas/choose-your-own-ice-cream-donuts-6-pack.24d0b44765a7c54237fcd7ea9d9d8093.jpg",
-            "name": "Elegant Desserts",
-            "dsc": "Choose Your Own Ice Cream Donuts - 6 Pack",
-            "price": 69
+            "id": "mousse-maracuja",
+            "img": "./img/cardapio/sobremesas/mousse.jpg",
+            "name": "Mousse de Maracujá",
+            "dsc": "Mousse leve e aerado de maracujá, servido com sementes da fruta por cima.",
+            "price": 6,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "17481-jewish-dessert-3-pack",
-            "img": "./img/cardapio/sobremesas/jewish-classics-dessert-pack.7d4b76630f2fe75dcb7bbcf2501b7390.jpg",
-            "name": "Ess-a-Bagel",
-            "dsc": "Jewish Classics Dessert Pack",
-            "price": 89.95
+            "id": "torta-holandesa",
+            "img": "./img/cardapio/sobremesas/torta-holandesa.jpg",
+            "name": "Torta Holandesa",
+            "dsc": "Torta gelada com camadas de biscoito, creme de chocolate e creme de baunilha, coberta com ganache de chocolate.",
+            "price": 8,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "dessert-bar-care-package",
-            "img": "./img/cardapio/sobremesas/dessert-bar-care-package.324aa28fe98c9dc67b75aac43376902e.jpg",
-            "name": "Bread and Roses Bakery",
-            "dsc": "Dessert Bar Care Package",
-            "price": 65
+            "id": "merengue-morango",
+            "img": "./img/cardapio/sobremesas/merengue-morango.jpg",
+            "name": "Merengue de Morango",
+            "dsc": "Sobremesa leve e delicada feita com camadas de merengue crocante, creme de baunilha e morangos frescos.",
+            "price": 7,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "donut-cookies-12-pack",
+            "id": "donut",
             "img": "./img/cardapio/sobremesas/donut-cookies-12-pack.46f42c61c4a79fd2051a99b2f23e890e.jpg",
-            "name": "Stan's Donuts",
-            "dsc": "Donut Cookies - 12 Pack",
-            "price": 49
+            "name": "Donuts Tradicional",
+            "dsc": "Donut clássico frito, coberto com açúcar de confeiteiro.",
+            "price": 4,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "gulab-jamun-ice-cream-cakes-2-pack",
-            "img": "./img/cardapio/sobremesas/gulab-jamun-ice-cream-cakes-2-pack.c45b4d0750ad22d741f84dc1f26d20e7.jpg",
-            "name": "Malai Ice Cream",
-            "dsc": "Gulab Jamun Ice Cream Cakes - 2 Pack",
-            "price": 79
+            "id": "pave-chocolate",
+            "img": "./img/cardapio/sobremesas/pave-chocolate.jpg",
+            "name": "Pavê de Chocolate",
+            "dsc": "Pavê com camadas alternadas de biscoito de chocolate e creme de chocolate, finalizado com raspas de chocolate por cima.",
+            "price": 7,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "jacques-world-famous-chocolate-chip-cookies-12-pack",
-            "img": "./img/cardapio/sobremesas/jacques-world-famous-chocolate-chip-cookies-12-pack.3b373bdd67cd25084182c21499f675d1.jpg",
-            "name": "Jacques Torres Chocolate",
-            "dsc": "Jacques' World Famous Chocolate Chip Cookies - 12 Pack",
-            "price": 69.95
+            "id": "sorvete-morango",
+            "img": "./img/cardapio/sobremesas/sorvete-morango.jpg",
+            "name": "Sorvete Morango",
+            "dsc": "Sorvete suave e refrescante, feito com pedaços de morango fresco e polpa de fruta.",
+            "price": 6,
+            "comentario": '',
+            "acomp": []
         }
     ],
     "bebidas": [
@@ -287,170 +335,206 @@ var MENU = {
             "img": "./img/cardapio/bebidas/agua-mineral.jpg",
             "name": "Água mineral",
             "dsc": "Garrafa de 500 ml",
-            "price": 2
+            "price": 2,
+            "comentario": ''
         },
         {
             "id": "agua-gas",
             "img": "./img/cardapio/bebidas/agua-gas.jpg",
             "name": "Água com gás",
             "dsc": "Garrafa de 500 ml",
-            "price": 2.5
+            "price": 2.5,
+            "comentario": ''
         },
         {
             "id": "coca-cola-310",
             "img": "./img/cardapio/bebidas/coca-cola-310.jpg",
             "name": "Coca-Cola Original 310ml",
             "dsc": "Lata 310ml",
-            "price": 6
+            "price": 6,
+            "comentario": ''
         },
         {
             "id": "guarana-1",
             "img": "./img/cardapio/bebidas/guarana-1.jpg",
             "name": "Refrigerante Guaraná 1,5L",
             "dsc": "Garrafa 1,5L",
-            "price": 8
+            "price": 8,
+            "comentario": ''
         },
         {
             "id": "guarana-269",
             "img": "./img/cardapio/bebidas/guarana-269.jpg",
             "name": "Guaraná 269ml",
             "dsc": "Lata 269ml",
-            "price": 5
+            "price": 5,
+            "comentario": ''
         },
         {
             "id": "suco-abacaxi",
             "img": "./img/cardapio/bebidas/suco-abacaxi.jpg",
             "name": "Abacaxi",
             "dsc": "Suco de Abacaxi 500ml",
-            "price": 5
+            "price": 5,
+            "comentario": ''
         },
         {
             "id": "suco-acerola",
             "img": "./img/cardapio/bebidas/suco-acerola.jpg",
             "name": "Acerola",
             "dsc": "Suco de Acerola 500ml",
-            "price": 5
+            "price": 5,
+            "comentario": ''
         },
         {
             "id": "suco-caju",
             "img": "./img/cardapio/bebidas/suco-caju.jpg",
             "name": "Caju",
             "dsc": "Suco de Caju 500ml",
-            "price": 5
+            "price": 5,
+            "comentario": ''
         },
         {
             "id": "suco-goiaba",
             "img": "./img/cardapio/bebidas/suco-goiaba.jpg",
             "name": "Goiaba",
             "dsc": "Suco de Goiaba 500ml",
-            "price": 5
+            "price": 5,
+            "comentario": ''
         },
         {
             "id": "suco-laranja",
             "img": "./img/cardapio/bebidas/suco-laranja.jpg",
             "name": "Laranja",
             "dsc": "Suco de Laranja 500ml",
-            "price": 5
+            "price": 5,
+            "comentario": ''
         },
         {
             "id": "suco-manga",
             "img": "./img/cardapio/bebidas/suco-manga.jpg",
             "name": "Manga",
             "dsc": "Suco de Manga 500ml",
-            "price": 5
+            "price": 5,
+            "comentario": ''
         },
         {
             "id": "suco-melancia",
             "img": "./img/cardapio/bebidas/suco-melancia.jpg",
             "name": "Melancia",
             "dsc": "Suco de Melancia 500ml",
-            "price": 5
+            "price": 5,
+            "comentario": ''
         },
     ],
     "pizzas": [
         {
-            "id": "2-lou-malnatis-deep-dish-pizzas",
+            "id": "pizza-quatro-queijos",
             "img": "./img/cardapio/pizzas/2-lou-malnatis-deep-dish-pizzas.bf0fe065d251a9cca3925b269d443a27.jpg",
-            "name": "Lou Malnati's Pizza",
-            "dsc": "2 Lou Malnati's Deep Dish Pizzas",
-            "price": 67.99
+            "name": "Quatro Queijos",
+            "dsc": "Pizza com molho de tomate, queijo mussarela, queijo gorgonzola, queijo provolone, queijo parmesão e azeitonas.",
+            "price": 40.99,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "23699-choose-your-own-thin-crust-pizza-4-pack",
+            "id": "pizza-bauru",
             "img": "./img/cardapio/pizzas/choose-your-own-thin-crust-pizza-4-pack.b928a2008eab50c65dc87e59b5952190.jpg",
-            "name": "Bartolini's",
-            "dsc": "Choose Your Own Thin Crust Pizza - 4 Pack",
-            "price": 139
+            "name": "Bauru",
+            "dsc": "Pizza com molho de tomate, queijo mussarela, presunto, rosbife, tomate e azeitonas.",
+            "price": 36,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "choose-your-own-new-haven-style-pizza-6-pack",
+            "id": "pizza-margherita",
             "img": "./img/cardapio/pizzas/choose-your-own-new-haven-style-pizza-6-pack.ab82828afc6172cdd4017556c15e36dd.jpg",
-            "name": "Zuppardi's Apizza",
-            "dsc": "New Haven-Style Pizza - 6 Pack (Choose Your Own)",
-            "price": 79
+            "name": "Margherita",
+            "dsc": "Pizza clássica com molho de tomate, queijo mussarela, tomate fatiado, manjericão e azeitonas.",
+            "price": 30,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "6-lou-malnatis-deep-dish-pizzas",
+            "id": "pizza-calabresa",
             "img": "./img/cardapio/pizzas/6-lou-malnatis-deep-dish-pizzas.f59993181da5d295668c8a6fb856055e.jpg",
-            "name": "Lou Malnati's Pizza",
-            "dsc": "6 Lou Malnati's Deep Dish Pizzas",
-            "price": 116.99
+            "name": "Calabresa",
+            "dsc": "Pizza tradicional com molho de tomate, queijo mussarela, fatias de calabresa, cebola e azeitonas.",
+            "price": 35.99,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "wood-fired-pizzas-best-seller-4-pack",
-            "img": "./img/cardapio/pizzas/wood-fired-pizzas-best-seller-4-pack.1653bb05922ba153ac178f8365d27f6d.jpg",
-            "name": "Pizzeria Bianco",
-            "dsc": "Wood Fired Pizzas Best Seller - 4 Pack",
-            "price": 129
+            "id": "pizza-frango",
+            "img": "./img/cardapio/pizzas/pizza-frango.jpg",
+            "name": "Frango com Catupiry",
+            "dsc": "Pizza com molho de tomate, queijo mussarela, frango desfiado e catupiry.",
+            "price": 38,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "236991-choose-your-own-deep-dish-pizza-3-pack",
+            "id": "pizza-romeu-e-julieta",
             "img": "./img/cardapio/pizzas/choose-your-own-deep-dish-pizza-3-pack.4111791511244a4946bb5c9ad2c17da9.jpg",
-            "name": "Bartolini's",
-            "dsc": "Choose Your Own Deep Dish Pizza - 3 Pack",
-            "price": 139
+            "name": "Romeu e Julieta",
+            "dsc": "Pizza doce com queijo mussarela, goiabada e açúcar.",
+            "price": 32,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "choose-your-own-detroit-style-pizza-3-pack",
-            "img": "./img/cardapio/pizzas/detroit-style-pizza-choose-your-own-3-pack.6b6f4909ffd4066d5471e70eac5c3d89.jpg",
-            "name": "Emmy Squared",
-            "dsc": "Detroit-Style Pizza - Choose Your Own 3 Pack",
-            "price": 89
+            "id": "pizza-portuguesa",
+            "img": "./img/cardapio/pizzas/pizza-portuguesa.jpg",
+            "name": "Portuguesa",
+            "dsc": "Pizza com molho de tomate, queijo mussarela, presunto, ovos, cebola, pimentão, azeitonas e ervilha.",
+            "price": 37,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "brooklyn-pizza-choose-your-own-5-pack",
-            "img": "./img/cardapio/pizzas/brooklyn-pizza-choose-your-own-5-pack.edc4f476a75207d0af840ce6f225f2b3.jpg",
-            "name": "Paesan's Pizza",
-            "dsc": "Brooklyn Pizza - Choose Your Own 5 Pack",
-            "price": 69
+            "id": "pizza-camarao",
+            "img": "./img/cardapio/pizzas/pizza-camarao.jpg",
+            "name": "Camarão",
+            "dsc": "Pizza com molho de tomate, queijo mussarela, camarão refogado, cebola, tomate e azeitonas.",
+            "price": 45,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "choose-your-own-chicago-deep-dish-pizza-4-pack",
-            "img": "./img/cardapio/pizzas/chicago-deep-dish-pizza-4-pack.49927daafa8c147fe9bb2a113e56668e.jpg",
-            "name": "My Pi Pizza",
-            "dsc": "Chicago Deep Dish Pizza - 4 Pack",
-            "price": 129
+            "id": "pizza-mexicana",
+            "img": "./img/cardapio/pizzas/pizza-mexicana.jpg",
+            "name": "Mexicana",
+            "dsc": "Pizza com molho de tomate, queijo mussarela, carne moída, pimentão, cebola, milho verde, azeitonas e pimenta.",
+            "price": 39,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "4-lou-malnatis-deep-dish-pizzas",
-            "img": "./img/cardapio/pizzas/4-lou-malnatis-deep-dish-pizzas.8c79eb7506b5752ab3387d8174246b17.jpg",
-            "name": "Lou Malnati's Pizza",
-            "dsc": "4 Lou Malnati's Deep Dish Pizzas",
-            "price": 96.99
+            "id": "pizza-brigadeiro",
+            "img": "./img/cardapio/pizzas/pizza-brigadeiro.jpg",
+            "name": "Brigadeiro",
+            "dsc": "Pizza doce com brigadeiro, granulado e leite condensado.",
+            "price": 34.99,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "tonys-custom-pizza-3-pack",
-            "img": "./img/cardapio/pizzas/choose-your-own-pizza-3-pack.fcf7a43e38593007ef2857fe16d6dd26.jpg",
-            "name": "Tony's Pizza Napoletana",
-            "dsc": "Choose Your Own Pizza - 3 Pack",
-            "price": 99
+            "id": "pizza-baiana",
+            "img": "./img/cardapio/pizzas/pizza-baiana.jpg",
+            "name": "Baiana",
+            "dsc": " Pizza com molho de tomate, queijo mussarela, calabresa, pimenta, cebola e azeitonas.",
+            "price": 34,
+            "comentario": '',
+            "acomp": []
         },
         {
-            "id": "plain-thin-crust-pizza-4-pack",
-            "img": "./img/cardapio/pizzas/plain-thin-crust-pizza-4-pack.5540e9d166db2f0853643c6517e4a225.jpg",
-            "name": "The Columbia Inn",
-            "dsc": "Plain Thin Crust Pizza - 4 Pack",
-            "price": 79
+            "id": "pizza-banana-com-canela",
+            "img": "./img/cardapio/pizzas/pizza-banana-com-canela.jpg",
+            "name": "Banana com Canela",
+            "dsc": "Pizza doce com banana, canela, açúcar e leite condensado.",
+            "price": 30.99,
+            "comentario": '',
+            "acomp": []
         }
     ],
     "acai": [
@@ -555,21 +639,13 @@ var MENU = {
 
 
 var ACOMP = {
-    "churrasco": [
+    "pratos": [
         {
-            "id": "post-oak-smoked-half-brisket",
-            "img": "./img/cardapio/churrasco/post-oak-smoked-usda-prime-half-brisket.6f17178dde7d806670bcc73ff11762b3.jpg",
-            "name": "Southside Market & Barbeque",
-            "dsc": "Post Oak Smoked USDA Prime Half Brisket",
-            "price": 109
+            "id": "colher-e-guardanapo",
+            "img": "./img/cardapio/acai/acompanhamentos/colher-e-guardanapo.jpg",
+            "name": "Colher E Guardanapo",
+            "price": 1
         },
-        {
-            "id": "best-of-texas-bbq-combo-serves-14",
-            "img": "./img/cardapio/churrasco/best-of-texas-bbq-combo-serves-14.7ae90266335e539c67e77fed14b43029.jpg",
-            "name": "Snow's BBQ",
-            "dsc": "Best of Texas BBQ Combo - Serves 14",
-            "price": 269
-        }
     ],
     "burgers": [
         {
@@ -629,57 +705,100 @@ var ACOMP = {
     ],
     "sobremesas": [
         {
-            "id": "canudo-extra-04",
-            "img": "./img/cardapio/sobremesas/gulab-jamun-ice-cream-cakes-2-pack.c45b4d0750ad22d741f84dc1f26d20e7.jpg",
-            "name": "Canudo extra",
-            "dsc": "Gulab Jamun Ice Cream Cakes - 2 Pack",
-            "price": 1.00
+            "id": "canudo",
+            "img": "./img/cardapio/bebidas/acompanhamentos/canudo.jpg",
+            "name": "Canudo biodegradavel",
+            "price": 1
         },
         {
-            "id": "jacques-world-famous-chocolate-chip-cookies-12-pack",
-            "img": "./img/cardapio/sobremesas/jacques-world-famous-chocolate-chip-cookies-12-pack.3b373bdd67cd25084182c21499f675d1.jpg",
-            "name": "Jacques Torres Chocolate",
-            "dsc": "Jacques' World Famous Chocolate Chip Cookies - 12 Pack",
-            "price": 69.95
-        }
+            "id": "colher-e-guardanapo",
+            "img": "./img/cardapio/acai/acompanhamentos/colher-e-guardanapo.jpg",
+            "name": "Colher E Guardanapo",
+            "price": 1
+        },
     ],
     "bebidas": [
         {
             "id": "canudo",
             "img": "./img/cardapio/bebidas/acompanhamentos/canudo.jpg",
             "name": "Canudo biodegradavel",
-            "price": 0.5
+            "price": 1
         }
     ],
     "pizzas": [
-        
         {
-            "id": "tonys-custom-pizza-3-pack",
-            "img": "./img/cardapio/pizzas/choose-your-own-pizza-3-pack.fcf7a43e38593007ef2857fe16d6dd26.jpg",
-            "name": "Tony's Pizza Napoletana",
-            "dsc": "Choose Your Own Pizza - 3 Pack",
-            "price": 99
+            "id": "colher-e-guardanapo",
+            "img": "./img/cardapio/acai/acompanhamentos/colher-e-guardanapo.jpg",
+            "name": "Colher E Guardanapo",
+            "price": 1
         },
         {
-            "id": "plain-thin-crust-pizza-4-pack",
-            "img": "./img/cardapio/pizzas/plain-thin-crust-pizza-4-pack.5540e9d166db2f0853643c6517e4a225.jpg",
-            "name": "The Columbia Inn",
-            "dsc": "Plain Thin Crust Pizza - 4 Pack",
-            "price": 79
-        }
+            "id": "sache",
+            "img": "./img/cardapio/pizzas/acompanhamentos/sache.jpg",
+            "name": "Sachê de Ketchup e Mostarda",
+            "price": 1
+        },
+        {
+            "id": "borda-pizza-catupiry",
+            "img": "./img/cardapio/pizzas/acompanhamentos/bordas-pizza.jpg",
+            "name": "Borda Recheada de Catupiry.",
+            "price": 7
+        },
+        {
+            "id": "borda-pizza-cheddar",
+            "img": "./img/cardapio/pizzas/acompanhamentos/bordas-pizza.jpg",
+            "name": "Borda Recheada de Cheddar.",
+            "price": 7
+        },
+        {
+            "id": "borda-pizza-cream-cheese",
+            "img": "./img/cardapio/pizzas/acompanhamentos/bordas-pizza.jpg",
+            "name": "Borda Recheada de Cream Cheese.",
+            "price": 10
+        },
     ],
     "acai": [
         {
             "id": "colher-e-guardanapo",
             "img": "./img/cardapio/acai/acompanhamentos/colher-e-guardanapo.jpg",
             "name": "Colher E Guardanapo",
-            "price": 0.5
+            "price": 1
         },
         {
             "id": "pacoca",
             "img": "./img/cardapio/acai/acompanhamentos/pacoca.jpg",
             "name": "Paçoca",
             "price": 1.00
+        },
+        {
+            "id": "amendoim",
+            "img": "./img/cardapio/acai/acompanhamentos/amendoim.jpg",
+            "name": "Amendoim",
+            "price": 1.00
+        },
+        {
+            "id": "granola",
+            "img": "./img/cardapio/acai/acompanhamentos/granola.jpg",
+            "name": "Granola",
+            "price": 1.00
+        },
+        {
+            "id": "bis-branco",
+            "img": "./img/cardapio/acai/acompanhamentos/bis-branco.jpg",
+            "name": "Bis Branco",
+            "price": 2
+        },
+        {
+            "id": "bis-preto",
+            "img": "./img/cardapio/acai/acompanhamentos/bis-preto.jpg",
+            "name": "Bis Preto",
+            "price": 2
+        },
+        {
+            "id": "mel",
+            "img": "./img/cardapio/acai/acompanhamentos/mel.jpg",
+            "name": "Mel",
+            "price": 3
         },
         {
             "id": "mm",
@@ -691,7 +810,19 @@ var ACOMP = {
             "id": "ouro-branco",
             "img": "./img/cardapio/acai/acompanhamentos/ouro-branco.jpg",
             "name": "Ouro Branco",
-            "price": 1.50
+            "price": 2
+        },
+        {
+            "id": "ovomaltine",
+            "img": "./img/cardapio/acai/acompanhamentos/ovomaltine.jpg",
+            "name": "Ovomaltine",
+            "price": 3
+        },
+        {
+            "id": "nutella",
+            "img": "./img/cardapio/acai/acompanhamentos/nutella.jpg",
+            "name": "Nutella",
+            "price": 5.90
         },
     ]
 }
