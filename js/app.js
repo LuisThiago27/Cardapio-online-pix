@@ -184,8 +184,6 @@ cardapio.metodos = {
             }
         }
     },
-    
-    
 
     //atualiza o badge de totais dos botões "Meu carrinho"
     atualizaBadgeTotal: () => {
